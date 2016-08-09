@@ -1,3 +1,10 @@
+#### hand-rolled
+.mc-lists.el
+.smex-items
+/cider-history
+ido.last
+recentf
+
 #### joe made this: http://goel.io/joe
 #### emacs ####
 # -*- mode: gitignore; -*-
