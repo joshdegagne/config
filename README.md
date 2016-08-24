@@ -30,6 +30,8 @@ after the rest of the configuration has been loaded.
 git clone git@gitlab.com:joshdegagne/config.git
 ln -sf config/.emacs.d ~/.emacs.d
 ln -sf config/profiles.clj ~/.lein/profiles.clj
+echo "source ~/config/bash_helper.sh" >> ~/.bashrc 
+source ~/.bashrc
 ````
 
 Upon starting up Emacs for the first time, the third-party packages
