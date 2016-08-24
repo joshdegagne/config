@@ -6,8 +6,8 @@
 
 (use-package racer :ensure t
   :init (progn
-          (setq racer-rust-src-path "/usr/local/src/rust/src")
-          (setq racer-cmd "/Users/joshua.degagne/.cargo/bin/racer")
+          (setq racer-rust-src-path "/usr/local/src/rust/stable/src")
+          (setq racer-cmd "~/.cargo/bin/racer")
           (setq company-tooltip-align-annotations t)
           (setq company-minimum-prefix-length 2))
   :config (progn
