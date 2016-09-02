@@ -15,7 +15,7 @@
             (diminish-major-mode 'clojure-mode "Cλ")
             (bind-key "C-c C-z" nil clojure-mode-map))) ; Remove the binding for inferior-lisp-mode
 
-(use-package clojure-mode-extra-font-locking :pin melpa-stable :ensure t)
+(use-package clojure-mode-extra-font-locking :ensure t)
 
 (use-package cider :ensure t
   :init (progn
