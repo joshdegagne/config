@@ -18,6 +18,19 @@ curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-pro
 edit /etc/default/keyboard
 XKBOPTIONS="caps:ctrl_modifier"
 
+** bluetooth speakers
+edit /var/lib/gdm3/.config/pulse/client.conf (or create it, if it doesn't exist):
+autospawn = no
+daemon-binary = /bin/true
+
+After that you have to grant access to this file to gdm user:
+$ chown gdm:gdm /var/lib/gdm3/.config/pulse/client.conf
+
+In order to auto-connect a2dp for some devices, add this to /etc/pulse/default.pa:
+load-module module-switch-on-connect
+
+Reboot.
+
 * font
 sudo apt install ttf-anonymous-pro 
 
