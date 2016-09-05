@@ -3,6 +3,7 @@
   :config (progn
             (setq rust-indent-offset 4)
             (setq rust-indent-method-chain t)))
+(add-hook 'rust-mode-hook 'highlight-symbol-mode)
 
 (use-package racer :ensure t
   :init (progn
