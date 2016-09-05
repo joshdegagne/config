@@ -71,6 +71,3 @@
 (use-package visual-regexp-steroids :ensure t)
 
 (use-package highlight-symbol :ensure t)
-
-(use-package flycheck :ensure t
-  :init (global-flycheck-mode))
