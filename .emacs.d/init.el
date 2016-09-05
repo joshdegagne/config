@@ -45,6 +45,7 @@
 (use-package server
   :if window-system
   :init (add-hook 'after-init-hook 'server-start t))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -60,7 +61,7 @@
  '(nil nil t)
  '(package-selected-packages
    (quote
-    (yaml-mode wgrep-ag visual-regexp-steroids use-package undo-tree transpose-frame string-utils solarized-theme smex smartscan slamhound shm shell-pop rainbow-mode rainbow-delimiters racer projectile powerline popwin markdown-mode+ magit latest-clojure-libraries kibit-helper js2-mode ido-ubiquitous ibuffer-vc highlight-symbol haskell-mode goto-chg flx-ido fill-column-indicator expand-region es-mode elisp-slime-nav dired+ datomic-snippets csv-mode company-quickhelp clojure-mode-extra-font-locking cljsbuild-mode clj-refactor circe cider-eval-sexp-fu buffer-move browse-kill-ring beginend avy auto-indent-mode ag)))
+    (flycheck yaml-mode wgrep-ag visual-regexp-steroids use-package undo-tree transpose-frame string-utils solarized-theme smex smartscan slamhound shm shell-pop rainbow-mode rainbow-delimiters racer projectile powerline popwin markdown-mode+ magit latest-clojure-libraries kibit-helper js2-mode ido-ubiquitous ibuffer-vc highlight-symbol haskell-mode goto-chg flx-ido fill-column-indicator expand-region es-mode elisp-slime-nav dired+ datomic-snippets csv-mode company-quickhelp clojure-mode-extra-font-locking cljsbuild-mode clj-refactor circe cider-eval-sexp-fu buffer-move browse-kill-ring beginend avy auto-indent-mode ag)))
  '(shell-pop-shell-type
    (quote
     ("eshell" "*eshell*"
