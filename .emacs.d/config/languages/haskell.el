@@ -2,6 +2,7 @@
 
 ;; structured-haskell-mode --------------
 (package-install 'haskell-mode)
+(add-hook 'haskell-mode-hook 'highlight-symbol-mode)
 (package-install 'shm)
 (require 'haskell-mode)
 (require 'haskell-interactive-mode)

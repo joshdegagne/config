@@ -71,8 +71,6 @@
 (use-package visual-regexp-steroids :ensure t)
 
 (use-package highlight-symbol :ensure t)
-(add-hook 'clojure-mode-hook 'highlight-symbol-mode)
-(add-hook 'haskell-mode-hook 'highlight-symbol-mode)
 
 (use-package flycheck :ensure t
   :init (global-flycheck-mode))
