@@ -2,12 +2,13 @@
   :mode (("\\.rs$" . rust-mode))
   :config (progn
             (setq rust-indent-offset 4)
-            (setq rust-indent-method-chain t)))
+            (setq rust-indent-method-chain t)
+            (add-hook 'rust-mode-hook 'highlight-symbol-mode)))
 
 (use-package racer :ensure t
   :init (progn
-          (setq racer-rust-src-path "/usr/local/src/rust/src")
-          (setq racer-cmd "/Users/joshua.degagne/.cargo/bin/racer")
+          (setq racer-rust-src-path (getenv "RUST_SRC_PATH"))
+          (setq racer-cmd "~/.cargo/bin/racer")
           (setq company-tooltip-align-annotations t)
           (setq company-minimum-prefix-length 2))
   :config (progn

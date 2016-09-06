@@ -14,6 +14,7 @@
   :config (progn
             (diminish-major-mode 'clojure-mode "Cλ")
             (bind-key "C-c C-z" nil clojure-mode-map))) ; Remove the binding for inferior-lisp-mode
+(add-hook 'clojure-mode-hook 'highlight-symbol-mode)
 
 (use-package clojure-mode-extra-font-locking :ensure t)
 
