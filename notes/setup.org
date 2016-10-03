@@ -34,6 +34,11 @@ Reboot.
 * font
 sudo apt install ttf-anonymous-pro 
 
+* git
+Example:
+ln -sf ~/cenx/jira-commit-msg-hook /usr/local/share/git-core/templates/hooks/commit-msg
+ln -sf ~/cenx/jira-prepare-commit-msg-hook /usr/local/share/git-core/templates/hooks/prepare-commit-msg
+
 * rust
 
 curl https://sh.rustup.rs -sSf | sh
