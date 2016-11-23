@@ -71,7 +71,7 @@
                                                (powerline-raw (concat " "
                                                                       (when (and file-name vc-mode)
                                                                         (concat "(" (-> file-name
-                                                                                        vc-working-revision
+                                                                                        vc-git--symbolic-ref
                                                                                         (string-utils-truncate-to 40))
                                                                                 ")")))
                                                               'file-ml-face 'r)
