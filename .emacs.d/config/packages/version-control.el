@@ -43,31 +43,6 @@
             (bind-key "C-x C-k" 'magit-kill-file-on-line magit-status-mode-map)
             (bind-key "W" 'magit-toggle-whitespace magit-status-mode-map)))
 
-;; (use-package git-gutter :ensure t :diminish "")
-;; (use-package git-gutter-fringe :ensure t
-;;   :config (progn (set-face-foreground 'git-gutter-fr:added    "green4")
-;;                  (set-face-foreground 'git-gutter-fr:modified "grey50")
-;;                  (set-face-foreground 'git-gutter-fr:deleted  "red3")
-;;                  (fringe-helper-define 'git-gutter-fr:added nil
-;;                    "........"
-;;                    "...XX..."
-;;                    "...XX..."
-;;                    "XXXXXXXX"
-;;                    "XXXXXXXX"
-;;                    "...XX..."
-;;                    "...XX..."
-;;                    "........")
-;;                  (fringe-helper-define 'git-gutter-fr:modified nil
-;;                    "........"
-;;                    "XXXXX..."
-;;                    "XXXXX..."
-;;                    "XXXXX..."
-;;                    "XXXXX..."
-;;                    "XXXXX..."
-;;                    "XXXXX..."
-;;                    "........")
-;;                  (global-git-gutter-mode)))
-
 (defadvice vc-annotate (around fullscreen activate)
   (window-configuration-to-register :vc-annotate-fullscreen)
   ad-do-it
