@@ -2,10 +2,8 @@
   :init (add-hook 'dired-mode-hook 'dired-hide-details-mode)
   :bind ("C-x C-d" . dired)
   :config (define-key dired-mode-map (kbd "C-x C-k") 'dired-do-delete))
-
-;; dired+ -------------------------------
-(use-package dired+ :ensure t)
-(diredp-toggle-find-file-reuse-dir 1)
+(use-package dired+ :ensure t
+  :config (diredp-toggle-find-file-reuse-dir 1))
 
 (use-package shell-pop :ensure t
   :config (custom-set-variables
