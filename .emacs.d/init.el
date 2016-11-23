@@ -11,6 +11,9 @@
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 (push "/usr/local/bin" exec-path)
 
+;; Don't save stuff into init.el
+(setq custom-file (expand-file-name "emacs-custom.el" user-emacs-directory))
+
 ;; Setup the package management
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -45,35 +48,3 @@
 (use-package server
   :if window-system
   :init (add-hook 'after-init-hook 'server-start t))
-
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(eval-sexp-fu-flash ((t (:foreground "green4" :weight bold))))
- '(org-level-1 ((t (:inherit default :foreground "#cb4b16"))))
- '(org-level-2 ((t (:inherit default :foreground "#859900"))))
- '(org-level-3 ((t (:inherit default :foreground "#268bd2"))))
- '(org-level-4 ((t (:inherit default :foreground "#b58900"))))
- '(org-level-5 ((t (:inherit default :foreground "#2aa198"))))
- '(org-level-6 ((t (:inherit default :foreground "#859900"))))
- '(org-level-7 ((t (:inherit default :foreground "#dc322f"))))
- '(org-level-8 ((t (:inherit default :foreground "#268bd2")))))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (git-link racer rust-mode es-mode csv-mode yaml-mode markdown-mode js2-mode elisp-slime-nav kibit-helper latest-clojure-libraries slamhound datomic-snippets cljsbuild-mode clj-refactor cider-eval-sexp-fu eval-sexp-fu cider clojure-mode-extra-font-locking clojure-mode magit popwin powerline string-utils rainbow-mode solarized-theme smartscan rainbow-delimiters paredit smex flx-ido ido-ubiquitous shell-pop dired+ auto-indent-mode projectile wgrep-ag ag highlight-symbol visual-regexp-steroids visual-regexp goto-chg multiple-cursors avy browse-kill-ring undo-tree expand-region company-quickhelp company circe fill-column-indicator transpose-frame buffer-move ibuffer-vc reveal-in-osx-finder beginend use-package)))
- '(shell-pop-shell-type
-   (quote
-    ("eshell" "*eshell*"
-     (lambda nil
-       (eshell shell-pop-term-shell)))))
- '(shell-pop-universal-key "M-`")
- '(shell-pop-window-position "top")
- '(shell-pop-window-size 100))
