@@ -1,7 +1,7 @@
 (setq ns-use-srgb-colorspace nil)
 
 ;; Remove the UI
-(dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+(dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode horizontal-scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
 (setq inhibit-startup-message t)
 (set-fringe-mode '(1 . 1))
@@ -61,3 +61,19 @@
  '(org-level-6 ((t (:inherit default :foreground "#859900"))))
  '(org-level-7 ((t (:inherit default :foreground "#dc322f"))))
  '(org-level-8 ((t (:inherit default :foreground "#268bd2")))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (git-link racer rust-mode es-mode csv-mode yaml-mode markdown-mode js2-mode elisp-slime-nav kibit-helper latest-clojure-libraries slamhound datomic-snippets cljsbuild-mode clj-refactor cider-eval-sexp-fu eval-sexp-fu cider clojure-mode-extra-font-locking clojure-mode magit popwin powerline string-utils rainbow-mode solarized-theme smartscan rainbow-delimiters paredit smex flx-ido ido-ubiquitous shell-pop dired+ auto-indent-mode projectile wgrep-ag ag highlight-symbol visual-regexp-steroids visual-regexp goto-chg multiple-cursors avy browse-kill-ring undo-tree expand-region company-quickhelp company circe fill-column-indicator transpose-frame buffer-move ibuffer-vc reveal-in-osx-finder beginend use-package)))
+ '(shell-pop-shell-type
+   (quote
+    ("eshell" "*eshell*"
+     (lambda nil
+       (eshell shell-pop-term-shell)))))
+ '(shell-pop-universal-key "M-`")
+ '(shell-pop-window-position "top")
+ '(shell-pop-window-size 100))
