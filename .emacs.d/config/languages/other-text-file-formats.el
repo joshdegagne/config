@@ -2,8 +2,6 @@
   :mode (("\\.markdown\\'" . markdown-mode)
          ("\\.md\\'" . markdown-mode)))
 
-(use-package markdown-mode+ :ensure t)
-
 (use-package yaml-mode :ensure t)
 
 (use-package make-mode :ensure t)
