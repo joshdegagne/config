@@ -1,7 +1,6 @@
 
 (set-face-attribute 'default nil :font "Anonymous Pro 13")
 
-;; this writes to init.el
 (custom-set-faces
  '(org-level-1 ((t (:inherit default :foreground "#cb4b16"))))
  '(org-level-2 ((t (:inherit default :foreground "#859900"))))

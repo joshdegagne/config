@@ -2,6 +2,7 @@
   :init (add-hook 'dired-mode-hook 'dired-hide-details-mode)
   :bind ("C-x C-d" . dired)
   :config (define-key dired-mode-map (kbd "C-x C-k") 'dired-do-delete))
+
 (use-package dired+ :ensure t
   :config (diredp-toggle-find-file-reuse-dir 1))
 
@@ -75,12 +76,6 @@ Symbols matching the text at point are put first in the completion list."
 (use-package flx-ido :ensure t
   :init (setq ido-use-faces nil) ; disable ido faces to see flx highlights
   :config (flx-ido-mode t))
-
-;; (use-package ido-vertical-mode
-;;   ;;Makes Ido vertical, making it easier to read
-;;   :ensure t
-;;   :config (progn (ido-vertical-mode 1)
-;;                  (setq max-mini-window-height 0.5)))
 
 (setq ido-auto-merge-delay-time 9) ; unit is seconds
 

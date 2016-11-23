@@ -43,14 +43,14 @@
                  (diminish-major-mode 'undo-tree-visualizer-mode "⅄"))
   :diminish ((undo-tree-mode . "")))
 
-(use-package browse-kill-ring :pin melpa-stable :ensure t
+(use-package browse-kill-ring :ensure t
   :config (browse-kill-ring-default-keybindings))
 
-(use-package avy :pin melpa-stable :ensure t
+(use-package avy :ensure t
   :bind (("C-." . avy-goto-word-or-subword-1)
          ("C-o" . avy-goto-word-or-subword-1)))
 
-(use-package multiple-cursors  :pin melpa-stable :ensure t
+(use-package multiple-cursors :ensure t
   :bind (("C->" . mc/mark-next-like-this)
          ("C-<" . mc/mark-previous-like-this)
          ("C-c C->" . mc/mark-all-like-this)
