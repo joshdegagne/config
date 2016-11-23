@@ -34,8 +34,8 @@
           (add-hook 'clojure-mode-hook 'cider-mode))
   :config (progn
             (diminish-major-mode 'cider-repl-mode "Ç»")
-            (eldoc-mode)
             (add-to-list 'same-window-buffer-names "*cider*")
+            (add-hook 'cider-mode-hook 'eldoc-mode)
             (add-hook 'cider-repl-mode-hook 'lisp-mode-setup)
             (add-hook 'cider-connected-hook 'cider-enable-on-existing-clojure-buffers))
   :diminish " ç")
