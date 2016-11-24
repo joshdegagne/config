@@ -70,4 +70,6 @@
 (use-package visual-regexp :ensure t)
 (use-package visual-regexp-steroids :ensure t)
 
+(use-package highlight :ensure t)
+
 (use-package highlight-symbol :ensure t)

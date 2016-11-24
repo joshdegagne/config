@@ -3,7 +3,7 @@
                  (set-face-foreground 'diff-added "green4")
                  (set-face-foreground 'diff-removed "red3")))
 
-(use-package magit :pin melpa-stable :ensure t
+(use-package magit :ensure t
   :init (progn (setq magit-last-seen-setup-instructions "1.4.0")
                (setq magit-display-buffer-function
                      #'magit-display-buffer-fullframe-status-v1)
