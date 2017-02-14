@@ -12,3 +12,5 @@ function targz(){
 function ghead(){ # useful for peaking at csv.gz headers
     gzip -cd $1 | head
 }
+
+alias q32='QHOME=~/q rlwrap -r ~/q/l32/q'
