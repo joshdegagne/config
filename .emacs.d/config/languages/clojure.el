@@ -3,8 +3,6 @@
           (setq buffer-save-without-query t)
           (add-hook 'clojure-mode-hook
                     (lambda ()
-                      (push '("partial" . ?∂) prettify-symbols-alist)
-                      (push '("comp" . ?∘) prettify-symbols-alist)
                       (lisp-mode-setup))))
   :mode (("\\.cljs$" . clojure-mode)
          ("\\.cljx$" . clojure-mode)

@@ -40,13 +40,14 @@
                        [criterium "0.4.4"]
                        ;; visualization
                        [rhizome "0.2.7"]]
-        :injections [(use 'debux.core)
-                     (use 'clojure.java.io)
-                     (require 'spyscope.core)
-                     (require '[lucid.core.inject :as inject])
+        :injections [(require '[clojure.java.io :as jio]
+                              '[debux.core :as dx]
+                              '[lucid.core.inject :as inject]
+                              '[spyscope.core])
                      (inject/in [lucid.core.inject :refer [inject [in inject-in]]]
                                 [clojure.pprint pprint]
                                 [clojure.java.shell sh]
+                                [debux.core dbg]
                                 [alembic.still [distill pull] lein [load-project pull-project]]
                                 [clojure.tools.namespace.repl refresh]
                                 [clojure.repl doc source]
