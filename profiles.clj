@@ -1,4 +1,4 @@
-{:user {:aliases { "repl" ["do" ["clean"] ["repl"]]
+{:user {:aliases {"repl" ["do" ["clean"] ["repl"]]
                   "dumbrepl" ["with-profile" "repl" ["trampoline" "run" "-m" "clojure.main/main"]]
                   ;; linters
                   "kibit"     ["update-in" ":plugins" "conj" "[lein-kibit \"0.1.2\" :exclusions [org.clojure/clojure]]" "--" "kibit"]
