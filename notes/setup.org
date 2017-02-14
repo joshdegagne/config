@@ -33,6 +33,20 @@ Reboot.
 
 * font
 sudo apt install ttf-anonymous-pro 
+** emoji
+sudo add-apt-repository ppa:eosrei/fonts
+
+you can only have one of these installed at a time so remember to
+remove one if you want the other
+
+*** emojione
+sudo apt install fonts-emojione-svginot
+*** twitter
+sudo apt install fonts-twemoji-svginot
+
+*** picker applet
+sudo add-apt-repository ppa:ys/emojione-picker
+sudo apt-get install emojione-picker
 
 * git
 Example:
@@ -51,5 +65,20 @@ sudo curl -O https://static.rust-lang.org/dist/rustc-nightly-src.tar.gz
 
 sudo ln -sf ~/config/startup.sh /etc/profile.d/.
 
+* clojure
 
+sudo ln -sf ~/config/profiles.clj ~/.lein/.
+** java
+*** check version (it will suggest some things)
+java -version
+*** get the openjdk one
+sudo apt install openjdk-8-jre-headless
+** lein (this gets the rest of clojure too)
+https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+*** check that it works
+lein repl
 
+* chat
+** discord
+https://discordapp.com/api/download/canary?platform=linux
+sudo dpkg -i /path/to/discord-canary-X.X.X.deb
