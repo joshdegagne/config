@@ -38,7 +38,7 @@ Upon starting up Emacs for the first time, the third-party packages
 will be automatically downloaded and installed.
 
 ## references
-This config has been heavily inspired by:
+The emacs config has been heavily inspired by:
 * Achint Sandhu - https://github.com/sandhu/emacs.d
 * Magnar Sveen - https://github.com/magnars/.emacs.d
 * Steve Purcell - https://github.com/purcell/emacs.d
