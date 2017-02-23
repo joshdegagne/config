@@ -5,7 +5,7 @@ PS1="< \u \w\$(__git_ps1 ' [%s]') > "
 alias rebash='source ~/.bash_profile'
 
 alias ls='ls -lhGAF'
-alias tree='tree -FI *.class --prune' # tree that woks cleanly for clojure projects
+alias cljtree='tree -FI *.class --prune' # tree that woks cleanly for clojure projects
 
 alias ftp='ftp -i'
 
