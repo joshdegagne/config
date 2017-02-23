@@ -1,3 +1,4 @@
+#!/bin/bash
 
 source ~/.git-prompt.sh
 PS1="< \u \w\$(__git_ps1 ' [%s]') > "
