@@ -7,7 +7,7 @@ alias rebash='source ~/.bash_profile'
 alias ls='ls -lhGAF'
 alias cljtree='tree -FI *.class --prune' # tree that woks cleanly for clojure projects
 
-alias ftp='ftp -i'
+alias ftp='ftp -i' # no interactive prompt
 
 alias untargz='tar -zxvf'
 function targz(){
