@@ -1,4 +1,4 @@
-{:user {:aliases {"repl" ["do" ["clean"] ["repl"]]
+{:user {:aliases {;; "repl" ["do" ["clean"] ["repl"]] ;; need to comment out to be able to lein repl :connect
                   "dumbrepl" ["with-profile" "repl" ["trampoline" "run" "-m" "clojure.main/main"]]
                   ;; linters
                   "kibit"     ["update-in" ":plugins" "conj" "[lein-kibit \"0.1.2\" :exclusions [org.clojure/clojure]]" "--" "kibit"]
@@ -28,22 +28,27 @@
                        [org.clojars.gjahad/debug-repl "0.3.3"]
                        [difform "1.1.2"]
                        [alembic "0.3.2"]
+                       [org.clojure/data.avl "0.0.17"]
                        [im.chit/lucid.core.inject "1.2.0"]
                        [im.chit/lucid.mind "1.2.0"]
                        [io.aviso/pretty "0.1.31"]
                        ;; debugging
-                       [spyscope "0.1.6"]
+                       [jsofra/data-scope "0.1.2"]
                        [philoskim/debux "0.2.1"]
                        [org.clojure/tools.trace "0.7.9"]
                        [org.clojure/tools.namespace "0.2.11"]
                        ;; benchmarking
-                       [criterium "0.4.4"]
+                       [criterium "0.4.4"] ; clj only
+                       [com.taoensso/tufte "1.1.1"] ; clj/s
                        ;; visualization
                        [rhizome "0.2.7"]]
         :injections [(require '[clojure.java.io :as jio]
                               '[debux.core :as dx]
                               '[lucid.core.inject :as inject]
-                              '[spyscope.core])
+                              'data-scope.charts
+                              'data-scope.graphs
+                              'data-scope.inspect
+                              'data-scope.pprint)
                      (inject/in [lucid.core.inject :refer [inject [in inject-in]]]
                                 [clojure.pprint pprint]
                                 [clojure.java.shell sh]
