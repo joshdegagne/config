@@ -1,5 +1,5 @@
 
-(set-face-attribute 'default nil :font "Anonymous Pro 13")
+(set-face-attribute 'default nil :font Anonymous Pro 15)
 
 (custom-set-faces
  '(org-level-1 ((t (:inherit default :foreground "#cb4b16"))))
