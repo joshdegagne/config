@@ -10,3 +10,6 @@
                             (setq index (+ 1 (match-end 0)))
                             (add-to-list 'js2-additional-externs (match-string 2 buf))))))
             (diminish-major-mode 'js2-mode "J")))
+
+(use-package coffee-mode :ensure t)
+(custom-set-variables '(coffee-tab-width 2))
