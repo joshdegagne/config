@@ -17,3 +17,5 @@
 
 (use-package es-mode :ensure t
   :mode ("\\.es$" . es-mode))
+
+(use-package dockerfile-mode :ensure t)
