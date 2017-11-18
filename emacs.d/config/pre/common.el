@@ -29,3 +29,8 @@
 
 (use-package beginend :ensure t
   :config (beginend-setup-all))
+
+(defmacro diminish-major-mode (mode new-name)
+  `(add-hook (intern (concat (symbol-name ,mode) "-hook"))
+             '(lambda () (setq mode-name ,new-name))))
+

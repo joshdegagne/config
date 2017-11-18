@@ -23,6 +23,5 @@
 
 (diminish-major-mode 'lisp-mode "λ")
 (diminish-major-mode 'emacs-lisp-mode "ξλ")
-(diminish-major-mode 'slime-repl-mode "π»")
 
 (use-package eldoc :diminish "")

@@ -6,11 +6,6 @@
   (menu-bar-mode 1)
   (desktop-save-mode 1))
 
-(diminish 'auto-fill-function "")
-(after 'abbrev (diminish 'abbrev-mode " ⠤"))
-(after 'hideshow (diminish 'hs-minor-mode ""))
-(after 'yasnippet (diminish 'yas-minor-mode " ʏ"))
-
 (use-package solarized-theme :ensure t
   :init (progn
           (setq solarized-high-contrast-mode-line t
