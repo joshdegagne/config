@@ -30,7 +30,7 @@ after the rest of the configuration has been loaded.
 git clone git@gitlab.com:joshdegagne/config.git
 rm -r ~/.emacs.d
 
-ln -sf `pwd`/config/.emacs.d ~/emacs.d
+ln -sf `pwd`/config/emacs.d ~/.emacs.d
 ln -sf `pwd`/config/profiles.clj ~/.lein/profiles.clj
 echo "source ~/config/bash_helper.sh" >> ~/.bashrc 
 source ~/.bashrc
