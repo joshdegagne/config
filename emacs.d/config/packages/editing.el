@@ -18,22 +18,6 @@
             (setq mode-name "Ƭ")
             (turn-on-auto-fill)))
 
-(use-package teppoudo-editing
-  :load-path "lisp/"
-  :bind (([remap goto-line] . goto-line-with-feedback)
-         ([remap move-beginning-of-line] . smarter-move-beginning-of-line)
-         ("<C-return>" . open-line-below)
-         ("<C-S-return>" . open-line-above)
-         ("<C-S-down>" . move-line-down)
-         ("<C-S-up>" . move-line-up)
-         ("S-SPC" . just-one-space)
-         ("M-j" . swallow-newline)
-         ("C-w" . kill-region-or-backward-word)))
-
-(use-package teppoudo-search
-  :load-path "lisp/"
-  :init (bind-key "<backspace>" 'isearch-remove-unmatched-part isearch-mode-map))
-
 (use-package expand-region :ensure t
   :bind (("C-=" . er/expand-region)
          ("C--" . er/contract-region)))

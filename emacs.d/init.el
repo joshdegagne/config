@@ -35,8 +35,7 @@
 
 ;; Load the configuration
 (let ((user-config-file (expand-file-name (concat user-login-name ".el") user-emacs-directory)))
-  (dolist (dir (list "lisp"
-                     "config/pre"
+  (dolist (dir (list "config/pre"
                      "config/packages"
                      "config/languages"
                      "config/post"
