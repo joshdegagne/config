@@ -1,0 +1,44 @@
+* general reminders
+# Make yourself a sudo-er (i.e. add yourself to the wheel group)
+# This repo should have a gnome add-on file. Use that to customize gnome if you want 😊.
+# Making a shortcuts (i.e. showing desktop) is in "Settings"
+# Caps -> Ctrl is is "Tweaks"
+
+* configure git
+git config --global user.email "joshdegagne@gmail.com"
+git config --global user.name "Joshua DeGagné"
+
+* streaming video codexes
+** check 
+https://www.youtube.com/html5 
+** add RPM Fusion repo (http://rpmfusion.org/)
+su -c 'dnf install http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm'
+** install the correct codex
+sudo dnf install ffmpeg-libs
+
+* command line progs
+** monitor
+sudo dnf install htop
+
+* programming env
+** tilix
+sudo dnf install tilix
+** java
+should be there. check with java -v
+** clojure
+# make sure java is there first.
+mkdir bin
+curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > ~/bin/lein
+chmod a+x ~/bin/lein
+lein 
+lein -v
+** erlang
+** rust
+** haskell
+
+* don't keep old kernels around
+** check installed kernels
+rpm -q kernel
+** if there are more than 2:
+dnf install yum-utils
+package-cleanup --oldkernels --count=2
