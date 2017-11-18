@@ -13,7 +13,7 @@
            '(shell-pop-window-height 100)
            '(shell-pop-window-position "top")))
 
-(use-package ido-ubiquitous :ensure t
+(use-package ido-completing-read+ :ensure t
   :config (progn
             (defun ido-imenu ()
               "Update the imenu index and then use ido to select a symbol to navigate to.
