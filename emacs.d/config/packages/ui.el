@@ -6,15 +6,8 @@
   (menu-bar-mode 1)
   (desktop-save-mode 1))
 
-(use-package solarized-theme :ensure t
-  :init (progn
-          (setq solarized-high-contrast-mode-line t
-                solarized-use-less-bold t
-                solarized-emphasize-indicators nil
-                solarized-scale-org-headlines nil
-                x-underline-at-descent-line t)
-          (load-theme 'solarized-light 'no-confirm))
-  :config (setq color-theme-is-global t))
+(use-package color-theme-solarized :ensure t)
+(load-theme 'solarized t)
 
 (use-package rainbow-mode :ensure t
   :diminish rainbow-mode)
