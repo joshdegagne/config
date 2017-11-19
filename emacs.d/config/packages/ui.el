@@ -20,7 +20,6 @@
   :diminish rainbow-mode)
 
 (use-package string-utils :ensure t)
-(use-package dash :ensure t)
 (use-package projectile)
 
 (use-package powerline :ensure t

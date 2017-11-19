@@ -34,3 +34,4 @@
   `(add-hook (intern (concat (symbol-name ,mode) "-hook"))
              '(lambda () (setq mode-name ,new-name))))
 
+(use-package dash :ensure t)
