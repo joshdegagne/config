@@ -1,7 +1,8 @@
 #!/bin/bash
 
-source ~/.git-prompt.sh
-PS1="< \u \w\$(__git_ps1 ' [%s]') > "
+# source ~/.git-prompt.sh # mac, gotta go get this online
+. /usr/share/git-core/contrib/completion/git-prompt.sh # fedora has it!
+PS1="[\u \w\$(__git_ps1 ' <%s>')]$ "
 
 alias rebash='source ~/.bash_profile'
 
