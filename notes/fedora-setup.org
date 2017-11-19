@@ -4,6 +4,9 @@
 # Making a shortcuts (i.e. showing desktop) is in "Settings"
 # Caps -> Ctrl is is "Tweaks"
 
+* fonts
+sudo dnf install paratype-pt-mono-fonts dejavu-sans-mono-fonts mozilla-fira-mono-fonts msimonson-anonymouspro-fonts
+
 * configure git
 git config --global user.email "joshdegagne@gmail.com"
 git config --global user.name "Joshua DeGagné"
