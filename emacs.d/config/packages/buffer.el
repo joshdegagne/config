@@ -65,21 +65,3 @@
       scroll-conservatively 10000
       mouse-wheel-scroll-amount '(3)
       mouse-wheel-progressive-speed nil)
-
-;; bugs: line doesn't appear or disappear when your point is not in the window.
-(use-package fill-column-indicator :ensure t
-  :init (progn
-          (setq fci-handle-truncate-lines nil
-                truncate-lines nil
-                truncate-partial-width-windows nil)
-          (setq-default fci-rule-column 80))
-  :config (progn
-            (defun toggle-fci (&optional unused)
-              (if (> (window-width) fci-rule-column)
-                  (fci-mode 1)
-                (fci-mode 0)))
-
-            (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
-            (global-fci-mode 1)
-            (add-hook 'window-configuration-change-hook 'toggle-fci))
-  :bind (("C-x |" . toggle-fci2)))
