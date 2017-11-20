@@ -37,6 +37,7 @@ lein
 lein -v
 ** erlang
 ** rust
+curl https://sh.rustup.rs -sSf | sh
 ** haskell
 
 * don't keep old kernels around

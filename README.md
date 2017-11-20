@@ -19,7 +19,7 @@ after the rest of the configuration has been loaded.
 
 ## requirements
 
-* emacs 24.4 or greater
+* emacs 25 or greater
 * bash
 * leiningen
 * rustup

@@ -1,8 +1,13 @@
-(use-package markdown-mode :ensure t
-  :mode (("\\.markdown\\'" . markdown-mode)
-         ("\\.md\\'" . markdown-mode)))
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
 
-(use-package yaml-mode :ensure t)
+(use-package yaml-mode :ensure t
+  :mode ("\\.yaml\\'" . yaml-mode))
 
 (use-package make-mode :ensure t)
 
