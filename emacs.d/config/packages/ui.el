@@ -6,9 +6,6 @@
   (menu-bar-mode 1)
   (desktop-save-mode 1))
 
-(use-package color-theme-solarized :ensure t)
-(load-theme 'solarized t)
-
 (use-package rainbow-mode :ensure t
   :diminish rainbow-mode)
 
