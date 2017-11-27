@@ -36,6 +36,11 @@ chmod a+x ~/bin/lein
 lein 
 lein -v
 ** erlang
+sudo dnf install erlang
+wget https://s3.amazonaws.com/rebar3/rebar3 && chmod +x rebar3
+./rebar3 local install
+export PATH=/home/josh.degagne/.cache/rebar3/bin:$PATH
+rm rebar3
 ** rust
 curl https://sh.rustup.rs -sSf | sh
 ** haskell
