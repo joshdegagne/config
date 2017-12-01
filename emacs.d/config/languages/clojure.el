@@ -1,13 +1,11 @@
 (use-package clojure-mode :ensure t
   :init (progn
           (setq buffer-save-without-query t)
-          (add-hook 'clojure-mode-hook
-                    (lambda ()
-                      (lisp-mode-setup))))
+          (add-hook 'clojure-mode-hook (lambda () (lisp-mode-setup)))
+          (add-hook 'clojure-mode-hook 'highlight-symbol-mode))
   :config (progn
             (diminish-major-mode 'clojure-mode "Cλ")
             (bind-key "C-c C-z" nil clojure-mode-map))) ; Remove the binding for inferior-lisp-mode
-(add-hook 'clojure-mode-hook 'highlight-symbol-mode)
 
 (use-package clojure-mode-extra-font-locking :ensure t)
 
@@ -24,6 +22,7 @@
                 cider-repl-history-file (expand-file-name "cider-history" user-emacs-directory)
                 cider-repl-use-clojure-font-lock t
                 cider-switch-to-repl-command 'cider-switch-to-relevant-repl-buffer)
+          (put-clojure-indent 'match 1)
           (add-hook 'clojure-mode-hook 'cider-mode))
   :config (progn
             (diminish-major-mode 'cider-repl-mode "Ç»")
