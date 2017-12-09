@@ -20,8 +20,9 @@ su -c 'dnf install http://download1.rpmfusion.org/free/fedora/rpmfusion-free-rel
 sudo dnf install ffmpeg-libs
 
 * command line progs
-** monitor
 sudo dnf install htop
+sudo dnf install pandoc
+** alien
 wget https://sourceforge.net/projects/alien-pkg-convert/files/latest/download
 tar xf download
 cd alien-8.95/
@@ -51,6 +52,7 @@ go here: http://www.red-lang.org/p/getting-started.html
 ** rust
 curl https://sh.rustup.rs -sSf | sh
 ** haskell
+sudo dnf install haskell-platform
 
 * don't keep old kernels around
 ** check installed kernels
