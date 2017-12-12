@@ -53,6 +53,8 @@ go here: http://www.red-lang.org/p/getting-started.html
 curl https://sh.rustup.rs -sSf | sh
 ** haskell
 sudo dnf install haskell-platform
+# if stack isn't there get it from here:
+curl -sSL https://get.haskellstack.org/ | sh
 
 * don't keep old kernels around
 ** check installed kernels
