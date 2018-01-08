@@ -1,12 +1,14 @@
 {:user {:aliases {;; "repl" ["do" ["clean"] ["repl"]] ;; need to comment out to be able to lein repl :connect
                   "dumbrepl" ["with-profile" "repl" ["trampoline" "run" "-m" "clojure.main/main"]]
                   ;; linters
-                  "kibit"     ["update-in" ":plugins" "conj" "[lein-kibit \"0.1.2\" :exclusions [org.clojure/clojure]]" "--" "kibit"]
-                  "eastwood"  ["update-in" ":plugins" "conj" "[jonase/eastwood \"0.2.3\"]" "--" "eastwood"]
+                  "kibit"     ["update-in" ":plugins" "conj" "[lein-kibit \"0.1.6\" :exclusions [org.clojure/clojure]]" "--" "kibit"]
+                  "eastwood"  ["update-in" ":plugins" "conj" "[jonase/eastwood \"0.2.5\"]" "--" "eastwood"]
                   "slamhound" ["update-in" ":dependencies" "conj" "[slamhound \"1.5.5\"]" "--" ["run" "-m" "slam.hound"]]
                   "bikeshed"  ["update-in" ":plugins" "conj" "[lein-bikeshed \"0.4.0\"]" "--" "bikeshed"]
-                  "yagni"     ["update-in" ":plugins" "conj" "[venantius/yagni \"0.1.4\"]" "--" "yagni"]
                   "cljfmt"    ["update-in" ":plugins" "conj" "[lein-cljfmt \"0.5.6\"]" "--" "cljfmt"]
+                  "yagni"     ["update-in" ":plugins" "conj" "[venantius/yagni \"0.1.4\"]" "--"
+                               "update-in" ":source-paths " "conj" "\"test\"" "--"
+                               "yagni"]
                   ;; automated testing
                   "cloverage" ["update-in" ":plugins" "conj" "[lein-cloverage \"1.0.9\"]" "--" "cloverage"]
                   "test-out"  ["update-in" ":plugins" "conj" "[lein-test-out \"0.3.1\"]" "--" "test-out"]
