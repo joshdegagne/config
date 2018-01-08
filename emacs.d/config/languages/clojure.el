@@ -22,7 +22,11 @@
                 cider-repl-history-file (expand-file-name "cider-history" user-emacs-directory)
                 cider-repl-use-clojure-font-lock t
                 cider-switch-to-repl-command 'cider-switch-to-relevant-repl-buffer)
-          (put-clojure-indent 'match 1)
+          (define-clojure-indent
+            (match 1)
+            ;; compojure
+            (context 2)
+            (POST 2))
           (add-hook 'clojure-mode-hook 'cider-mode))
   :config (progn
             (diminish-major-mode 'cider-repl-mode "Ç»")
