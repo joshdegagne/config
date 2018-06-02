@@ -1,4 +1,4 @@
-{:user {:aliases {;; "repl" ["do" ["clean"] ["repl"]] ;; need to comment out to be able to lein repl :connect
+{:user {:aliases {;; "repl" ["do" ["clean"] ["repl"]] ;; comment out to:   lein repl :connect
                   "dumbrepl" ["with-profile" "repl" ["trampoline" "run" "-m" "clojure.main/main"]]
                   ;; linters
                   "kibit"     ["update-in" ":plugins" "conj" "[lein-kibit \"0.1.6\" :exclusions [org.clojure/clojure]]" "--" "kibit"]
@@ -19,17 +19,18 @@
                   "ancient" ["update-in" ":plugins" "conj" "[lein-ancient \"0.6.10\" :exclusions [org.clojure/clojure]]" "--" "ancient"]
                   ;; application server
                   "immutant" ["update-in" ":plugins" "conj" "[lein-immutant \"2.1.0\"]" "--" "immutant"]}
-        :plugins [[venantius/ultra "0.5.0"]] :ultra {:color-scheme :solarized_dark}}
+        :plugins [[venantius/ultra "0.5.0"]]
+        :ultra {:color-scheme :solarized_dark}}
  :repl {:repl-options {:timeout 12000000}
         :jvm-opts ["-XX:-OmitStackTraceInFastThrow"]
-        :plugins [[cider/cider-nrepl "0.14.0-SNAPSHOT"]
-                  [refactor-nrepl "2.3.0-SNAPSHOT"]
+        :plugins [[cider/cider-nrepl "0.16.0"]
+                  [refactor-nrepl "2.3.1" :exclusions [alembic]]
                   ;; bytecode inspection
                   [lein-nodisassemble "0.1.3"]]
-        :dependencies [[org.clojure/tools.nrepl "0.2.12"]
+        :dependencies [[org.clojure/tools.nrepl "0.2.13"]
                        [org.clojars.gjahad/debug-repl "0.3.3"]
                        [difform "1.1.2"]
-                       [alembic "0.3.2"]
+                       [clojure-emacs/alembic "0.3.3"]
                        [org.clojure/data.avl "0.0.17"]
                        [im.chit/lucid.core.inject "1.2.0"]
                        [im.chit/lucid.mind "1.2.0"]
@@ -55,7 +56,7 @@
                                 [clojure.pprint pprint]
                                 [clojure.java.shell sh]
                                 [debux.core dbg]
-                                [alembic.still [distill pull] lein [load-project pull-project]]
+                                ;;[alembic.still [distill pull] lein [load-project pull-project]]
                                 [clojure.tools.namespace.repl refresh]
                                 [clojure.repl doc source]
                                 clojure.core
