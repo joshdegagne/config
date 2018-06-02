@@ -1,5 +1,5 @@
 ;; remember to delete .emacs.desktop if colours don't change
-(use-package color-theme-solarized :ensure t)
+;;(use-package color-theme-solarized :ensure t)
 ;;(load-theme 'solarized t)
 
 (use-package base16-theme :ensure t)
