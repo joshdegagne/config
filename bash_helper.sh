@@ -1,8 +1,14 @@
 #!/bin/bash
 
-# source ~/.git-prompt.sh # mac, gotta go get this online
-. /usr/share/git-core/contrib/completion/git-prompt.sh # fedora has it!
+## prompt
+## ------------------------------
+
+source ~/.git-prompt.sh # mac, gotta go get this online
+# . /usr/share/git-core/contrib/completion/git-prompt.sh # fedora has it!
 PS1="「\u ○ \w\$(__git_ps1 ' ○ %s')」➮ "
+
+## tools
+## ------------------------------
 
 alias rebash='source ~/.bash_profile'
 
@@ -14,7 +20,7 @@ alias ftp='ftp -i' # no interactive prompt
 
 alias untargz='tar -zxvf'
 
-function targz(){
+function targz(){ # tar something as the same name
     tar -zcvf $1.tar.gz $1
 }
 
@@ -22,8 +28,18 @@ function ghead(){ # useful for peaking at csv.gz headers
     gzip -cd $1 | head
 }
 
+function mvall(){
+    shopt -s dotglob # Includes filenames beginning with a dot.
+    mv "$@"
+    shopt -u dotglob # Disables previously enabled dotglob option.
+}
+
 eval "$(thefuck --alias)"
 
+## programming languages
+## ------------------------------
+
+## q
 alias q32='QHOME=~/q rlwrap -r ~/q/l32/q'
 
 ## erlang
