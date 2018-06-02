@@ -3,8 +3,7 @@
   :bind ("C-x C-d" . dired)
   :config (define-key dired-mode-map (kbd "C-x C-k") 'dired-do-delete))
 
-(use-package dired+ :ensure t
-  :config (diredp-toggle-find-file-reuse-dir 1))
+;;(use-package dired+ :ensure t :config (diredp-toggle-find-file-reuse-dir 1))
 
 (use-package shell-pop :ensure t
   :config (custom-set-variables
@@ -41,7 +40,7 @@ Symbols matching the text at point are put first in the completion list."
                                          (unless (or (null position) (null name))
                                            (add-to-list 'symbol-names name)
                                            (add-to-list 'name-and-pos (cons name position))))))))
-                  (addsymbols imenu--index-alist))
+                      (addsymbols imenu--index-alist))
                 ;; If there are matching symbols at point, put them at the beginning of `symbol-names'.
                 (let ((symbol-at-point (thing-at-point 'symbol)))
                   (when symbol-at-point
