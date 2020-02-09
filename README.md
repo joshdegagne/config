@@ -1,45 +1,25 @@
 # config
 
-This config is built on the shoulders of giants, and is slightly
-reorganized to align with my taste. There is an emacs config, a
-profiles.clj, and a few bash convinences.
+This config is built upon the shoulders of bloggers and coworkers (giants?)
+There is an emacs config, a profiles.clj, and a few bash convinences.
 
 ## emacs
 
-The focus is to provide a "batteries included" configuration for
-development that includes auto-completion and integrated
-documentation.
-
-### override
-
-In order to override parts of the configuration, create a directory
-named the same as your user name in .emacs.d and add .el files
-containing the overrides. All files in this directory will be loaded
-after the rest of the configuration has been loaded.
+The focus is to provide a configuration for development that includes
+auto-completion, structural editing, and highlighting. Mouse-less navigation is a goal so various forms of jumping and searching are included
 
 ## requirements
 
 * emacs 25 or greater
+* ripgrep
 * bash
 * leiningen
-* rustup
 
 ## installation
 
 ````
-git clone git@gitlab.com:joshdegagne/config.git
-rm -r ~/.emacs.d
-ln -s `pwd`/config/emacs.d ~/.emacs.d
-ln -sf `pwd`/config/profiles.clj ~/.lein/profiles.clj
-echo "source ~/config/bash_helper.sh" >> ~/.bashrc 
-source ~/.bashrc
+./install.sh
 ````
 
 Upon starting up Emacs for the first time, the third-party packages
 will be automatically downloaded and installed.
-
-## references
-The emacs config has been heavily inspired by:
-* Achint Sandhu - https://github.com/sandhu/emacs.d
-* Magnar Sveen - https://github.com/magnars/.emacs.d
-* Steve Purcell - https://github.com/purcell/emacs.d
