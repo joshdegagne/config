@@ -8,6 +8,7 @@
 
 (setq gc-cons-threshold 50000000) ; 50mb
 (setq large-file-warning-threshold 100000000) ; 100mb
+(push "/usr/local/bin" exec-path)
 
 ;; remove the ui
 (when (window-system)
