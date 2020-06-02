@@ -131,11 +131,12 @@
   :hook ((prog-mode text-mode) . rainbow-delimiters-mode))
 
 (use-package powerline :ensure t
+  :config
   ;; Included separators: alternate, arrow, arrow-fade, bar, box, brace, butt,
   ;; chamfer, contour, curve, rounded, roundstub, slant, wave, zigzag, and nil.
-  :init (setq powerline-default-separator 'slant)
+  (setq powerline-default-separator 'slant)
   ;; Included themes: default, center, center-evil, vim, and nano.
-  :config (powerline-default-theme))
+  (powerline-default-theme))
 
 ;; theme
 (use-package solarized-theme :ensure t
@@ -234,9 +235,9 @@
 
 ;; git
 (use-package magit :ensure t
-  :init (setq magit-display-buffer-function
-              #'magit-display-buffer-fullframe-status-v1)
-  :bind ("C-x m" . magit-status))
+  :bind ("C-x m" . magit-status)
+  :config (setq magit-display-buffer-function
+                #'magit-display-buffer-fullframe-status-v1))
 
 ;;; EDITING --------------------------------------------------------------------
 
@@ -254,9 +255,9 @@
 (use-package undo-tree :ensure t
   :diminish ""
   :config
+  (diminish-major-mode 'undo-tree-visualizer-mode "⅄")
   (global-undo-tree-mode)
-  (setq undo-tree-show-minibuffer-help t)
-  (diminish-major-mode 'undo-tree-visualizer-mode "⅄"))
+  (setq undo-tree-show-minibuffer-help t))
 
 ;; "tree" jumping
 (use-package avy :ensure t
@@ -290,14 +291,14 @@
 (use-package company-quickhelp :ensure t
   :config (company-quickhelp-mode 1))
 (use-package company :ensure t
-  :init (setq company-idle-delay 0.2
+  :diminish " α"
+  :config
+  (setq company-idle-delay 0.2
               company-tooltip-limit 10
               company-minimum-prefix-length 2
               company-tooltip-flip-when-above t)
-  :config
   (global-company-mode 1)
-  (add-to-list 'company-backends 'company-emoji)
-  :diminish " α")
+  (add-to-list 'company-backends 'company-emoji))
 
 ;;; PROGRAMMING ----------------------------------------------------------------
 
@@ -343,9 +344,8 @@
             (add-to-list 'same-window-buffer-names "*cider*")))
 
 (use-package eval-sexp-fu :ensure t
-  :init (custom-set-faces '(eval-sexp-fu-flash
-                            ((t (:foreground "green4" :weight bold))))))
-
+  :config (custom-set-faces '(eval-sexp-fu-flash
+                              ((t (:foreground "green4" :weight bold))))))
 (use-package cider-eval-sexp-fu :ensure t)
 
 (use-package clj-refactor :ensure t
@@ -356,9 +356,10 @@
 
 ;;; DATA -----------------------------------------------------------------------
 
-(add-hook 'json-mode-hook (lambda ()
-                            (make-local-variable 'js-indent-level)
-                            (setq js-indent-level 2)))
+(add-hook 'json-mode-hook
+          (lambda ()
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 2)))
 
 (use-package yaml-mode :ensure t
   :mode ("\\.ya?ml\\'" . yaml-mode))
