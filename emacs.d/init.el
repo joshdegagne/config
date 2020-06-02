@@ -301,13 +301,14 @@
   (add-to-list 'company-backends 'company-emoji))
 
 ;; keep things balanced automatically
-(use-package smartparens :ensure t
+(use-package smartparens-config :ensure smartparens
   :diminish "()"
   :hook ((prog-mode . smartparens-mode)
          (prog-mode . smartparens-strict-mode))
   :config
-  (require 'smartparens-config)
-  (show-smartparens-global-mode t))
+  (show-smartparens-global-mode t)
+  ;; :bind
+  )
 
 ;; semantic selections
 (use-package expand-region :ensure t
