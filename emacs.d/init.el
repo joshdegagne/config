@@ -300,6 +300,7 @@
   (global-company-mode 1)
   (add-to-list 'company-backends 'company-emoji))
 
+;; keep things balanced automatically
 (use-package smartparens :ensure t
   :diminish "()"
   :hook ((prog-mode . smartparens-mode)
@@ -307,6 +308,10 @@
   :config
   (require 'smartparens-config)
   (show-smartparens-global-mode t))
+
+;; semantic selections
+(use-package expand-region :ensure t
+  :bind ("C-=" . er/expand-region))
 
 ;;; PROGRAMMING ----------------------------------------------------------------
 
