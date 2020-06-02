@@ -300,6 +300,14 @@
   (global-company-mode 1)
   (add-to-list 'company-backends 'company-emoji))
 
+(use-package smartparens :ensure t
+  :diminish "()"
+  :hook ((prog-mode . smartparens-mode)
+         (prog-mode . smartparens-strict-mode))
+  :config
+  (require 'smartparens-config)
+  (show-smartparens-global-mode t))
+
 ;;; PROGRAMMING ----------------------------------------------------------------
 
 (use-package coffee-mode :ensure t
