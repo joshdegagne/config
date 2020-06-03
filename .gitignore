@@ -1,8 +1,11 @@
 #### emacs ####
-emacs.d/auto-save-list
-emacs.d/generated.custom.el
 emacs.d/elpa/
 emacs.d/quelpa/
+emacs.d/generated.custom.el
+emacs.d/.mc-lists.el
+emacs.d/auto-save-list
+emacs.d/cider-history
+emacs.d/recentf
 
 #### apple ####
 *.DS_Store
