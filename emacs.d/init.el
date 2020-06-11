@@ -390,10 +390,13 @@
             (setq js-indent-level 2)))
 
 (use-package yaml-mode :ensure t
-  :mode ("\\.ya?ml\\'" . yaml-mode))
+  :mode "\\.ya?ml\\'")
 
 (use-package csv-mode :ensure t
-  :mode ("\\.[Cc][Ss][Vv]\\'" . csv-mode))
+  :mode "\\.[Cc][Ss][Vv]\\'")
+
+(use-package nix-mode
+  :mode "\\.nix\\'")
 
 ;;; TEXT -----------------------------------------------------------------------
 
