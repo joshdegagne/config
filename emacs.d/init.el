@@ -28,7 +28,7 @@
       scroll-conservatively 100000
       scroll-preserve-screen-position 1)
 
-;; don't polute init.el with generated elisp
+;; don't pollute init.el with generated elisp
 (setq custom-file (concat user-emacs-directory "generated.custom.el"))
 (when (file-exists-p custom-file) (load custom-file))
 
@@ -208,7 +208,7 @@
 (use-package smex :ensure t
   :init (setq smex-save-file (concat user-emacs-directory ".smex-items")))
 
-;; ivy, councel and swiper for completion
+;; ivy, counsel and swiper for completion
 (use-package counsel :ensure t
   ;;need 27 :diminish ('ivy-mode "🔰")
   :init (ivy-mode 1)
