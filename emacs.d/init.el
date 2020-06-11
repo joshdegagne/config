@@ -42,6 +42,8 @@
       global-auto-revert-non-file-buffers t
       auto-revert-verbose nil)
 
+(desktop-save-mode 1)
+
 ;; answering just 'y' or 'n' will do
 (defalias 'yes-or-no-p 'y-or-n-p)
 
