@@ -298,13 +298,15 @@
   (add-to-list 'company-backends 'company-emoji))
 
 ;; keep things balanced automatically
+;; needs help with elisp quoting
 (use-package smartparens-config :ensure smartparens
   :diminish "()"
   :hook ((prog-mode . smartparens-mode)
          (prog-mode . smartparens-strict-mode))
   :config
+  ;; highlights the paren that matches paren at point
   (show-smartparens-global-mode t)
-  ;; :bind
+  ;; :bind ; need to add shortcuts for stuff (slurp, barf, wrap, unwrap, etc...)
   )
 
 ;; semantic selections
