@@ -205,9 +205,6 @@
   :diminish which-key-mode
   :config (which-key-mode +1))
 
-;; fuzzy matching
-(use-package flx :ensure t)
-
 (use-package smex :ensure t
   :init (setq smex-save-file (concat user-emacs-directory ".smex-items")))
 
@@ -219,8 +216,6 @@
                 enable-recursive-minibuffers t
                 ivy-count-format "(%d/%d) " ; space before end of string
                 ivy-initial-inputs-alist nil ; don't insert leading '^'
-                ivy-re-builders-alist '((t . ivy--regex-fuzzy)) ; use flx
-                ;; magit-completing-read-function 'ivy-completing-read)
                 )
   :bind (("C-s" . swiper-isearch)
          ("M-y" . counsel-yank-pop)))
