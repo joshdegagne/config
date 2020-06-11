@@ -15,7 +15,8 @@
                   "ancient" ["update-in" ":plugins" "conj" "[lein-ancient \"0.6.15\" :exclusions [org.clojure/clojure]]" "--" "ancient"]}}
  :repl {:repl-options {:timeout 12000000}
         :jvm-opts ["-XX:-OmitStackTraceInFastThrow"]
-        :plugins [[cider/cider-nrepl "0.24.0"]
+        :plugins [[nrepl/nrepl "0.7.0"]
+                  [cider/cider-nrepl "0.25.1"]
                   [refactor-nrepl "2.5.0"]]
         :dependencies [;; debugging
                        [jsofra/data-scope "0.1.2"]
