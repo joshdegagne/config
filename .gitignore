@@ -2,6 +2,7 @@
 emacs.d/elpa/
 emacs.d/quelpa/
 emacs.d/generated.custom.el
+emacs.d/.emacs.desktop*
 emacs.d/.mc-lists.el
 emacs.d/auto-save-list
 emacs.d/cider-history
