@@ -23,9 +23,9 @@ auto-completion, structural editing, and highlighting. Mouse-less navigation is 
 
 ## installation
 
-````
+```bash
 ./install.sh
-````
+```
 
 Upon starting up Emacs for the first time, the third-party packages
 will be automatically downloaded and installed.
