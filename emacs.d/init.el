@@ -220,6 +220,21 @@
   :bind (("C-s" . swiper-isearch)
          ("M-y" . counsel-yank-pop)))
 
+;; spelling
+(use-package flyspell
+  :config (setq ispell-program-name "aspell"
+                ispell-extra-args '("--sug-mode=ultra"
+                                    "--camel-case"
+                                    "--lang=en_CA"))
+  :hook ((prog-mode text-mode) . flyspell-mode))
+
+(use-package flyspell-correct :ensure t
+  :after flyspell
+  :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
+
+;; (this mode has versions for avy, helm, popup, etc...)
+(use-package flyspell-correct-ivy :ensure t :after flyspell-correct)
+
 ;;; FILES ----------------------------------------------------------------------
 
 (use-package dired+ :ensure t
