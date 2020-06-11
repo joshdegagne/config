@@ -1,7 +1,7 @@
 # config
 
 This config is built upon the shoulders of bloggers and coworkers (giants?)
-There is an emacs config, a profiles.clj, and a few bash convinences.
+There is an emacs config, a profiles.clj, and a few bash conveniences.
 
 ## emacs
 
@@ -10,10 +10,16 @@ auto-completion, structural editing, and highlighting. Mouse-less navigation is 
 
 ## requirements
 
-* emacs 25 or greater
-* ripgrep
-* bash
-* leiningen
+### general
+
+- __emacs__ 25 or greater
+- __aspell__ for spell-checking
+- __ripgrep__ for fs search
+
+### programming language support
+
+- __leiningen__ for clojure
+- ...
 
 ## installation
 
