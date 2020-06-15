@@ -155,6 +155,7 @@
 (when (window-system)
   (set-frame-font "Fira Code 16")
   (use-package fira-code-mode :ensure t
+    :diminish ""
     :hook (prog-mode text-mode)))
 
 
