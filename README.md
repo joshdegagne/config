@@ -21,6 +21,11 @@ auto-completion, structural editing, and highlighting. Mouse-less navigation is 
 - __leiningen__ for clojure
 - ...
 
+### fonts
+
+- [Fira Code](https://github.com/tonsky/FiraCode)
+- [Fira Code Symbols](https://github.com/Profpatsch/blog/blob/master/posts/ligature-emulation-in-emacs/post.md#appendix-b-update-1-firacode-integration)
+
 ## installation
 
 ```bash
