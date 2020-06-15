@@ -314,11 +314,12 @@
 
 ;; keep things balanced automatically
 ;; needs help with elisp quoting
-(use-package smartparens-config :ensure smartparens
+(use-package  smartparens :ensure t
   :diminish "()"
   :hook ((prog-mode . smartparens-mode)
          (prog-mode . smartparens-strict-mode))
   :config
+  (require 'smartparens-config)
   ;; highlights the paren that matches paren at point
   (show-smartparens-global-mode t)
   ;; :bind ; need to add shortcuts for stuff (slurp, barf, wrap, unwrap, etc...)
