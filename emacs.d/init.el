@@ -372,8 +372,7 @@
 ;; elixir --------------------------------------------------
 
 (use-package elixir-mode :ensure t
-  :config
-  (diminish-major-mode "exλ"))
+  :config (diminish-major-mode 'elixir-mode "exλ"))
 
 ;;; DATA -----------------------------------------------------------------------
 
