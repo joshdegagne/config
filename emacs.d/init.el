@@ -124,9 +124,12 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+(use-package ibuffer :ensure t
+  :config (diminish-major-mode 'ibuffer "≣")
+  :bind (("C-x C-b" . ibuffer)))
 
 (use-package ibuffer-vc :ensure t
+  :after ibuffer
   :hook (ibuffer . ibuffer-vc-set-filter-groups-by-vc-root))
 
 ;;; DISPLAY --------------------------------------------------------------------
