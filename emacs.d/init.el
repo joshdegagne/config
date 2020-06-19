@@ -37,11 +37,6 @@
       backup-directory-alist '(("" . (concat user-emacs-directory "backups")))
       auto-save-default nil)
 
-;; auto refresh buffers
-(setq global-auto-revert-mode t
-      global-auto-revert-non-file-buffers t
-      auto-revert-verbose nil)
-
 (desktop-save-mode 1)
 
 ;; answering just 'y' or 'n' will do
@@ -118,11 +113,23 @@
 (use-package dash :ensure t)
 (use-package dash-functional :ensure t)
 
-;;; DISPLAY --------------------------------------------------------------------
+;;; BUFFERS --------------------------------------------------------------------
+
+;; auto refresh buffers
+(setq global-auto-revert-mode t
+      global-auto-revert-non-file-buffers t
+      auto-revert-verbose nil)
 
 ;; directory prefix for better buffer names
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(use-package ibuffer-vc :ensure t
+  :hook (ibuffer . ibuffer-vc-set-filter-groups-by-vc-root))
+
+;;; DISPLAY --------------------------------------------------------------------
 
 ;; highlight line at point
 (global-hl-line-mode 1)
@@ -158,8 +165,6 @@
     :diminish ""
     :hook (prog-mode text-mode)))
 
-
-
 ;;; KEYS -----------------------------------------------------------------------
 ;;(`bind-key` is only available after use-package)
 
@@ -171,8 +176,6 @@
 ;; make M-< and M-> sensible for common modes
 (use-package beginend :ensure t
   :config (beginend-setup-all))
-
-(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;;; SEARCH/SUGGESTION ----------------------------------------------------------
 
