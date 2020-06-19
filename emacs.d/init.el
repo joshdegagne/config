@@ -323,11 +323,15 @@
 
 (use-package dockerfile-mode :ensure t)
 
+;; clojure -------------------------------------------------
+
 (use-package clojure-mode :ensure t
   :init (setq buffer-save-without-query t)
   :bind ("C-c C-z" . clojure-mode-map) ; Remove the binding for inferior-lisp-mode
   :config (diminish-major-mode 'clojure-mode "Ⅽλ"))
+
 (use-package clojure-mode-extra-font-locking :ensure t)
+
 (use-package cider :ensure t
   :diminish " ⅽ"
   :init
@@ -350,9 +354,9 @@
   :hook ((clojure-mode . cider-mode)
          (cider-mode . eldoc-mode)
          (cider-connected . cider-enable-on-existing-clojure-buffers))
-  :config (progn
-            (diminish-major-mode 'cider-repl-mode "Ⅽλ»")
-            (add-to-list 'same-window-buffer-names "*cider*")))
+  :config
+  (diminish-major-mode 'cider-repl-mode "Ⅽλ»")
+  (add-to-list 'same-window-buffer-names "*cider*"))
 
 (use-package eval-sexp-fu :ensure t
   :config (custom-set-faces '(eval-sexp-fu-flash
@@ -365,7 +369,12 @@
                           (clj-refactor-mode 1)
                           (cljr-add-keybindings-with-prefix "C-c RET"))))
 
+;; elixir --------------------------------------------------
+
+(use-package elixir-mode :ensure t)
+
 ;;; DATA -----------------------------------------------------------------------
+
 
 (add-hook 'json-mode-hook
           (lambda ()
