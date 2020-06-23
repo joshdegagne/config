@@ -135,9 +135,22 @@
 ;; Easy workspaces creation and switching
 (use-package eyebrowse :ensure t
   :config
-  (setq eyebrowse-mode-line-separator " "
-        eyebrowse-new-workspace t)
+  (setq eyebrowse-new-workspace t)
   (eyebrowse-mode t))
+
+;; example title: EmacsConfig [1/4] | configuration.org
+
+(defun my-title-bar-format()
+  (let* ((current-slot (eyebrowse--get 'current-slot))
+         (window-configs (eyebrowse--get 'window-configs))
+         (window-config (assoc current-slot window-configs))
+         (window-config-name (nth 2 window-config))
+         (num-slots (length window-configs)))
+    (concat window-config-name " [" (number-to-string current-slot)
+            "/" (number-to-string num-slots) "] | " "%b")))
+
+(when (display-graphic-p)
+  (setq frame-title-format '(:eval (my-title-bar-format))))
 
 ;;; DISPLAY --------------------------------------------------------------------
 
