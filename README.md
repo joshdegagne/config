@@ -10,16 +10,29 @@ auto-completion, structural editing, and highlighting. Mouse-less navigation is 
 
 ## requirements
 
-### general
+### text editing
 
 - __emacs__ 25 or greater
-- __aspell__ for spell-checking
-- __ripgrep__ for fs search
+- __aspell__ spell-checking
+- __ripgrep__ file search
+
+### terminal
+
+- __kitty__ graphics accelerated terminal emulation
 
 ### programming language support
 
-- __leiningen__ for clojure
-- ...
+#### clojure
+
+- __java__ jvm runtime
+- __leiningen__ cider, project configuration, package management
+
+#### erlang/elixir
+
+- __erlang/OTP__ BEAM runtime
+- __rebar3__ erlang project configuration, package management
+- __elixir__ all the elixir tooling
+- __elixir-lsp__ integration with emacs
 
 ### fonts
 
