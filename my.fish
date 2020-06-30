@@ -3,7 +3,7 @@
 set delim '<>'
 set delim_colour black
 set delim_width (string length $delim)
-set colour_order magenta brmagenta blue cyan green yellow brred red
+set colour_order magenta brmagenta blue cyan green yellow brred
 set time_format "%Y:%b:%d:%Z:%H:%M:%S"
 
 function info_format -a terminal_width
