@@ -24,15 +24,18 @@ end
 
 # prompt
 function fish_prompt
-  ## info line(s)
-  set terminal_width (tput cols)
+  ## parameters
   set delimiter '<>'
   set delimiter_colour white
-  set delimiter_width (string length $delimiter)
   set colour_order magenta brmagenta blue cyan yellow
+  set time_format "%Y:%b:%d:%Z:%H:%M:%S"
+
+  ## info line(s)
+  set terminal_width (tput cols)
+  set delimiter_width (string length $delimiter)
   set cluster_name (kubectl config current-context)
   set t_git_branch (truncate (echo (git branch 2> /dev/null | grep "^\*" | cut -d \  -f 2)) 40)
-  set date_time (date +"%Y:%b:%d:%Z:%H:%M:%S")
+  set date_time (date +$time_format)
 
   # these `info` will always be there
   set info (echo $date_time) (hostname) (whoami)
