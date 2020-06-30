@@ -4,7 +4,7 @@ set delim '<>'
 set delim_colour white
 set delim_width (string length $delim)
 set colour_order magenta brmagenta blue cyan yellow
-set time_format ":::%Y:%b:%d:%Z:%H:%M:%S"
+set time_format "%Y:%b:%d:%Z:%H:%M:%S"
 
 function info_format -a terminal_width
   set info $argv[2..-1]
@@ -24,7 +24,6 @@ function info_format -a terminal_width
         set npos $len
       end
 
-      # print
       if test $npos -eq $len
         if test $pos -ne 0
           printf ' %.0s' (seq (math $tw - $pos)) # fill line with bg colour
