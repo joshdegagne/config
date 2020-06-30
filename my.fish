@@ -75,7 +75,7 @@ function fish_prompt
   printf "%s%s" (set_color brred; prompt_pwd) (set_color normal; echo '|> ')
 end
 
-set fish_prompt_pwd_raw_dirs 2
+set fish_prompt_pwd_raw_levels 2
 set fish_prompt_pwd_dir_length 2
 
 function prompt_pwd --description 'Print the current working directory, shortened to fit the prompt'
@@ -88,12 +88,11 @@ function prompt_pwd --description 'Print the current working directory, shortene
     return 0
   end
 
-  # This allows overriding fish_prompt_pwd_dir_length from the outside (global or universal) without leaking it
+  # This allows overriding fish_prompt_pwd_dir_length and fish_prompt_pwd_raw_levels from the outside (global or universal) without leaking them
   set -q fish_prompt_pwd_dir_length
   or set -l fish_prompt_pwd_dir_length 1
-
-  set -q fish_prompt_pwd_raw_dirs
-  or set -l fish_prompt_pwd_raw_dirs 1
+  set -q fish_prompt_pwd_raw_levels
+  or set -l fish_prompt_pwd_raw_levels 1
 
   # Replace $HOME with "~"
   set realhome ~
@@ -103,11 +102,11 @@ function prompt_pwd --description 'Print the current working directory, shortene
     echo $tmp
   else
     # Shorten to at most $fish_prompt_pwd_dir_length characters per directory
-    # and don't shorten
+    # and don't shorten at most $fish_prompt_pwd_raw_levels directories at the end
     set p (string split \/ $tmp)
     set n (count $p)
     for i in (seq $n)
-      if test $i -le (math $n - $fish_prompt_pwd_raw_dirs)
+      if test $i -le (math $n - $fish_prompt_pwd_raw_levels)
         printf "%s/" (string sub -l $fish_prompt_pwd_dir_length $p[$i])
       else if test $i -eq $n
         printf "%s" $p[$i]
