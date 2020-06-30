@@ -33,7 +33,7 @@ function fish_prompt
 
   set cluster_name (kubectl config current-context)
   set t_git_branch (truncate (echo (git branch 2> /dev/null | grep "^\*" | cut -d \  -f 2)) 40)
-  set date_time (date +":%Y:%b:%d:%Z:%H:%M:%S")
+  set date_time (date +"%Y:%b:%d:%Z:%H:%M:%S")
 
   set colour_order magenta brmagenta blue cyan yellow
   set info (echo $date_time) (hostname) (whoami)
