@@ -75,6 +75,13 @@ function fish_prompt
   printf "%s%s" (set_color brred; prompt_pwd) (set_color normal; echo '|> ')
 end
 
+function fish_title
+  set -l command (echo $_)
+  printf "%s" (prompt_pwd)
+  if test $command != "fish"; printf " %s" $command; end
+end
+
+
 # PATH -----------------------------------------------------------------------------------
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
