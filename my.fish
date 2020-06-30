@@ -26,20 +26,25 @@ function info_format -a terminal_width
 
       # print
       if test $npos -eq $len
-        if test $pos -ne 0; printf "\n"; end
+        if test $pos -ne 0
+          printf ' %.0s' (seq (math $tw - $pos)) # fill line with bg colour
+          printf "\n"
+        end
       else
         printf "%s" (set_color $delim_colour; echo $delim)
       end
       printf "%s" (set_color $colour_order[$n]; echo $first)
 
       rec_info_format $tw $npos (math $n + 1) $rest
+    else
+      printf ' %.0s' (seq (math $tw - $pos)) # fill line with bg colour
+      printf "\n"
     end
   end
 
   set_color -b black
   rec_info_format $terminal_width 0 1 $info
   set_color normal
-  printf "\n"
 end
 
 function truncate -a str _max dots
