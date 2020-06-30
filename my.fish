@@ -75,12 +75,59 @@ function fish_prompt
   printf "%s%s" (set_color brred; prompt_pwd) (set_color normal; echo '|> ')
 end
 
+set fish_prompt_pwd_raw_dirs 2
+set fish_prompt_pwd_dir_length 2
+
+function prompt_pwd --description 'Print the current working directory, shortened to fit the prompt'
+  set -l options 'h/help'
+  argparse -n prompt_pwd --max-args=0 $options -- $argv
+  or return
+
+  if set -q _flag_help
+    __fish_print_help prompt_pwd
+    return 0
+  end
+
+  # This allows overriding fish_prompt_pwd_dir_length from the outside (global or universal) without leaking it
+  set -q fish_prompt_pwd_dir_length
+  or set -l fish_prompt_pwd_dir_length 1
+
+  set -q fish_prompt_pwd_raw_dirs
+  or set -l fish_prompt_pwd_raw_dirs 1
+
+  # Replace $HOME with "~"
+  set realhome ~
+  set -l tmp (string replace -r '^'"$realhome"'($|/)' '~$1' $PWD)
+
+  if [ $fish_prompt_pwd_dir_length -eq 0 ]
+    echo $tmp
+  else
+    # Shorten to at most $fish_prompt_pwd_dir_length characters per directory
+    # and don't shorten
+    set p (string split \/ $tmp)
+    set n (count $p)
+    for i in (seq $n)
+      if test $i -le (math $n - $fish_prompt_pwd_raw_dirs)
+        printf "%s/" (string sub -l $fish_prompt_pwd_dir_length $p[$i])
+      else if test $i -eq $n
+        printf "%s" $p[$i]
+      else
+        printf "%s/" $p[$i]
+      end
+    end
+  end
+end
+
+function __fish_winch_handler --on-signal SIGWINCH
+__fish_cancel_commandline
+commandline -C (count ) -f repaint >/dev/null 2>/dev/null
+end
+
 function fish_title
   set -l command (echo $_)
   printf "%s" (prompt_pwd)
   if test $command != "fish"; printf " %s" $command; end
 end
-
 
 # PATH -----------------------------------------------------------------------------------
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
