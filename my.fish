@@ -1,4 +1,47 @@
-# prelude
+# PROMPT ---------------------------------------------------------------------------------
+## parameters
+set delim '<>'
+set delim_colour white
+set delim_width (string length $delim)
+set colour_order magenta brmagenta blue cyan yellow
+set time_format ":::%Y:%b:%d:%Z:%H:%M:%S"
+
+function info_format -a terminal_width
+  set info $argv[2..-1]
+  function rec_info_format -a tw pos n first
+    set rest $argv[5..-1] # everything that is not a named arg
+
+    if test -n "$first" # end condition
+      set len (string length $first)
+      if test $pos -ne 0 # the first one doesn't have a delimiter
+        set total (math $pos + $len + $delim_width)
+      else
+        set total (math $pos + $len)
+      end
+      if test $total -le $tw
+        set npos $total
+      else
+        set npos $len
+      end
+
+      # print
+      if test $npos -eq $len
+        if test $pos -ne 0; printf "\n"; end
+      else
+        printf "%s" (set_color $delim_colour; echo $delim)
+      end
+      printf "%s" (set_color $colour_order[$n]; echo $first)
+
+      rec_info_format $tw $npos (math $n + 1) $rest
+    end
+  end
+
+  set_color -b black
+  rec_info_format $terminal_width 0 1 $info
+  set_color normal
+  printf "\n"
+end
+
 function truncate -a str _max dots
   test -n "$_max" ; or set _max 10
   test -n "$dots" ; or set dots '...'
@@ -10,72 +53,27 @@ function truncate -a str _max dots
   end
 end
 
-function sum
-  math (for i in (seq (count $argv))
-    if test $i -gt 1; printf "+"; end
-    printf "%s" $argv[$i]
-  end)
-end
-
-function sum_list
-  set nums $argv
-  for i in (seq (count $nums)); sum $nums[1..$i]; end
-end
-
-# prompt
 function fish_prompt
-  ## parameters
-  set delimiter '<>'
-  set delimiter_colour white
-  set colour_order magenta brmagenta blue cyan yellow
-  set time_format "%Y:%b:%d:%Z:%H:%M:%S"
-
   ## info line(s)
   set terminal_width (tput cols)
-  set delimiter_width (string length $delimiter)
   set cluster_name (kubectl config current-context)
   set t_git_branch (truncate (echo (git branch 2> /dev/null | grep "^\*" | cut -d \  -f 2)) 40)
   set date_time (date +$time_format)
-
   # these `info` will always be there
   set info (echo $date_time) (hostname) (whoami)
   # these `info` could be blank
   if test -n $cluster_name; set -a info (echo $cluster_name); end
   if test -n $t_git_branch; set -a info (echo $t_git_branch); end
-
-  set info_widths (for i in $info; string length $i; end)
-  set accum_widths (sum_list (for i in (seq (count $info_widths))
-    if test $i -eq 1
-      math $info_widths[$i]
-    else
-      math $info_widths[$i] + $delimiter_width
-    end
-  end))
-
-  set_color -b black
-  for i in (seq (count $info))
-    set item $info[$i]
-    set item_colour $colour_order[$i]
-    set width_so_far $accum_widths[$i]
-    if test $i -gt 1
-      if test $width_so_far -gt $terminal_width
-        printf "\n"
-      else
-        printf "%s" (set_color $delimiter_colour; echo $delimiter)
-      end
-    end
-    printf "%s" (set_color $item_colour; echo $item)
-  end
+  info_format $terminal_width $info
 
   ## pwd prompt line
-  set_color normal
-  printf "\n%s%s" (set_color brred; prompt_pwd) (set_color normal; echo '|> ')
+  printf "%s%s" (set_color brred; prompt_pwd) (set_color normal; echo '|> ')
 end
 
-# path
+# PATH -----------------------------------------------------------------------------------
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
-# tools
+# TOOLS ----------------------------------------------------------------------------------
 ## thefuck
 thefuck --alias | source
 ## jenv
