@@ -79,10 +79,16 @@ end
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 # TOOLS ----------------------------------------------------------------------------------
-## thefuck
+## os specific
+switch (uname)
+  case Darwin
+    ### brew
+    abbr brewup 'brew update ; brew upgrade ; brew cask outdated | xargs -I _ brew cask upgrade _'
+    ### jenv
+    set PATH '~/.jenv/bin' $PATH
+    status --is-interactive; and source (jenv init -|psub)
+end
+
+## everywhere
+### thefuck
 thefuck --alias | source
-## jenv
-set PATH '~/.jenv/bin' $PATH
-status --is-interactive; and source (jenv init -|psub)
-## brew
-abbr brewup 'brew update ; brew upgrade ; brew cask outdated | xargs -I _ brew cask upgrade _'

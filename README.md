@@ -19,6 +19,7 @@ auto-completion, structural editing, and highlighting. Mouse-less navigation is 
 ### terminal
 
 - __kitty__ graphics accelerated terminal emulation
+- __thefuck__ cute way to fix mistakes
 
 ### programming language support
 
