@@ -58,6 +58,7 @@ function truncate -a str _max dots
 end
 
 function fish_prompt
+  printf "\n"
   ## info line(s)
   set terminal_width (tput cols)
   set cluster_name (kubectl config current-context)
@@ -83,3 +84,5 @@ thefuck --alias | source
 ## jenv
 set PATH '~/.jenv/bin' $PATH
 status --is-interactive; and source (jenv init -|psub)
+## brew
+abbr brewup 'brew update ; brew upgrade ; brew cask outdated | xargs -I _ brew cask upgrade _'
