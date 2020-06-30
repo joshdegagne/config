@@ -1,7 +1,7 @@
 # PROMPT ---------------------------------------------------------------------------------
 ## parameters
 set delim '<>'
-set delim_colour white
+set delim_colour black
 set delim_width (string length $delim)
 set colour_order magenta brmagenta blue cyan green yellow brred red
 set time_format "%Y:%b:%d:%Z:%H:%M:%S"
@@ -41,7 +41,7 @@ function info_format -a terminal_width
     end
   end
 
-  set_color -b black
+  set_color -b white
   rec_info_format $terminal_width 0 1 $info
   set_color normal
 end
