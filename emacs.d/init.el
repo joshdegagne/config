@@ -157,6 +157,10 @@
 ;; highlight line at point
 (global-hl-line-mode 1)
 
+;; see hex colours
+(use-package rainbow-mode :ensure t
+  :hook (prog-mode text-mode))
+
 ;; visually identify matching parens
 (use-package rainbow-delimiters :ensure t
   :diminish rainbow-delimiters
@@ -172,14 +176,14 @@
 
 ;; theme
 (use-package solarized-theme :ensure t
-  :init
-  (setq solarized-high-contrast-mode-line t
+  :config
+  (setq color-theme-is-global t
+        solarized-high-contrast-mode-line t
         solarized-use-less-bold t
         solarized-emphasize-indicators nil
         solarized-scale-org-headlines nil
         x-underline-at-descent-line t)
-  (load-theme 'solarized-light 'no-confirm)
-  :config (setq color-theme-is-global t))
+  (load-theme 'solarized-light 'no-confirm))
 
 ;; font
 (when (window-system)
@@ -187,9 +191,6 @@
   (use-package fira-code-mode :ensure t
     :diminish ""
     :hook (prog-mode text-mode)))
-
-(use-package rainbow-mode :ensure t
-  :hook (prog-mode text-mode))
 
 ;;; KEYS -----------------------------------------------------------------------
 ;;(`bind-key` is only available after use-package)
