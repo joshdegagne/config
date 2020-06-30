@@ -26,21 +26,21 @@ end
 function fish_prompt
   ## info line(s)
   set terminal_width (tput cols)
-
   set delimiter '<>'
   set delimiter_colour white
   set delimiter_width (string length $delimiter)
-
+  set colour_order magenta brmagenta blue cyan yellow
   set cluster_name (kubectl config current-context)
   set t_git_branch (truncate (echo (git branch 2> /dev/null | grep "^\*" | cut -d \  -f 2)) 40)
   set date_time (date +"%Y:%b:%d:%Z:%H:%M:%S")
 
-  set colour_order magenta brmagenta blue cyan yellow
+  # these `info` will always be there
   set info (echo $date_time) (hostname) (whoami)
+  # these `info` could be blank
   if test -n $cluster_name; set -a info (echo $cluster_name); end
   if test -n $t_git_branch; set -a info (echo $t_git_branch); end
-  set info_widths (for i in $info; string length $i; end)
 
+  set info_widths (for i in $info; string length $i; end)
   set accum_widths (sum_list (for i in (seq (count $info_widths))
     if test $i -eq 1
       math $info_widths[$i]
