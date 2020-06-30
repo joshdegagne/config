@@ -11,6 +11,9 @@ ln -sf `pwd`/aspell.en.pws ~/.aspell.en.pws
 # kitty terminal emulator
 ln -sf `pwd`/kitty.conf ~/.config/kitty/.
 
+# fish - (f)riendly (i)nteractive (sh)ell
+ln -sf `pwd`/my.fish ~/.config/fish/conf.d/.
+
 # clojure tooling
 ln -sf `pwd`/profiles.clj ~/.lein/profiles.clj
 
