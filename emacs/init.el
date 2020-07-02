@@ -187,7 +187,7 @@
 
 ;; font
 (when (window-system)
-  (set-frame-font "Fira Code 16")
+  (set-frame-font "Fira Code 17")
   (use-package fira-code-mode :ensure t
     :diminish ""
     :hook (prog-mode text-mode)))
