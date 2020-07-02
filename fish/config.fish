@@ -15,7 +15,7 @@ function fish_prompt
   # gather info
   set terminal_width (tput cols)
   set cluster_name (kubectl config current-context)
-  set t_git_branch (truncate (current_git_branch) 40 '...')
+  set t_git_branch (truncate 40 '...' (current_git_branch))
   set date_time (date +$time_format)
   # these `info` will always be there
   set info (echo $date_time) (hostname) (whoami)
@@ -121,13 +121,17 @@ function info_format -a terminal_width
   set_color normal
 end
 
-function truncate -a str _max suffix
-  test -n "$_max" ; or set _max 10
-  set max (math $_max-(echo "$suffix" | wc -m)+1)
-  if test -z "$str" -o (echo "$str" | wc -m) -le "$max"
-    echo "$str"
+function truncate -a _max suffix str
+  if test -n "$str" -a $_max -eq 0
+    test -n "$_max" ; or set _max 10
+    set max (math $_max-(echo "$suffix" | wc -m)+1)
+    if test -z "$str" -o (echo "$str" | wc -m) -le "$max"
+      echo "$str"
+    else
+      echo -e (echo "$str" | cut -c 1-$max) \b(echo $suffix)
+    end
   else
-    echo -e (echo "$str" | cut -c 1-$max) \b(echo $suffix)
+    echo $str
   end
 end
 
