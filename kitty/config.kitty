@@ -1,9 +1,9 @@
 # STYLE
 ## font
 font_family      Fira Code
-bold_font        auto
-italic_font      auto
-bold_italic_font auto
+bold_font        Fira Code Bold
+italic_font      Fira Sans Italic
+bold_italic_font Fira Sans Bold Italic
 font_size        16.0
 active_tab_font_style   bold
 inactive_tab_font_style italic

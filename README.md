@@ -39,6 +39,7 @@ auto-completion, structural editing, and highlighting. Mouse-less navigation is 
 
 - [Fira Code](https://github.com/tonsky/FiraCode)
 - [Fira Code Symbols](https://github.com/Profpatsch/blog/blob/master/posts/ligature-emulation-in-emacs/post.md#appendix-b-update-1-firacode-integration) (for emacs)
+- Fira Sans (for italics and thin. Hopefully Fira Mono implements this soon)
 
 ## installation
 
