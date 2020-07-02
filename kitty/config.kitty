@@ -50,3 +50,5 @@ inactive_tab_foreground #52676f
 ## layout
 ### golden ratio between main column and rest column -- :math.floor 100/1.618033988
 enabled_layouts tall:bias=61;full_size=1;mirrored=false
+
+scrollback_lines 10000
