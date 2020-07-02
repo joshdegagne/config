@@ -1,4 +1,5 @@
 # PROMPT ---------------------------------------------------------------------------------
+
 ## parameters
 set delim '<>'
 set delim_colour black
@@ -11,7 +12,7 @@ set fish_prompt_pwd_dir_length 2
 function fish_prompt
   # extra space is relaxing
   printf "\n"
-  # info line(s)
+  # gather info
   set terminal_width (tput cols)
   set cluster_name (kubectl config current-context)
   set t_git_branch (truncate (current_git_branch) 40 '...')
@@ -21,8 +22,9 @@ function fish_prompt
   # these `info` could be blank
   if test -n $cluster_name; set -a info (echo $cluster_name); end
   if test -n $t_git_branch; set -a info (echo $t_git_branch); end
-  info_format $terminal_width $info
 
+  # info line(s)
+  info_format $terminal_width $info
   # pwd prompt line
   printf "%s%s" (set_color brred; prompt_pwd) (set_color normal; echo '|> ')
 end
@@ -134,10 +136,13 @@ function current_git_branch
 end
 
 # PATH -----------------------------------------------------------------------------------
+
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 # TOOLS ----------------------------------------------------------------------------------
+
 ## os specific
+
 switch (uname)
   case Darwin
     ### brew
@@ -148,5 +153,19 @@ switch (uname)
 end
 
 ## everywhere
-### thefuck
+
 thefuck --alias | source
+
+abbr cljtree 'tree -FI *.class --prune' # tree that woks cleanly for clojure projects
+
+alias ftp 'ftp -i' # no interactive prompt
+
+alias untargz 'tar -zxvf'
+
+function targz -a filename --description 'tar something as the same name'
+  tar -zcvf $filename.tar.gz $filename
+end
+
+function gzhead -a filename --description 'useful for peaking at csv.gz headers'
+  gzip -cd $filename | head
+end
