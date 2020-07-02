@@ -149,7 +149,7 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 switch (uname)
   case Darwin
     ### brew
-    abbr brewup 'brew update ; brew upgrade ; brew cask outdated | xargs -I _ brew cask upgrade _'
+    abbr brewup 'brew update ; brew upgrade ; brew cask upgrade (brew cask outdated --greedy --json | jq --raw-output \'.[] | select((.installed_versions == "latest" and .current_version == "latest")| not) | .name\' | xargs -I _ printf "%s " _)'
     ### jenv
     set -p PATH '~/.jenv/bin'
     status --is-interactive; and source (jenv init -|psub)
@@ -160,8 +160,8 @@ thefuck --alias | source
 
 alias ftp 'ftp -i' # no interactive prompt
 
-abbr cljtree 'tree -aFI ".git|target"' # tree that works cleanly for clojure projects
-abbr etree 'tree -aFI ".git|elpa|quelpa"' # tree that works cleanly for emacs
+abbr cltree 'tree -aFI ".git|target"'      # for (cl)ojure projects
+abbr emtree 'tree -aFI ".git|elpa|quelpa"' # for (em)acs configs
 
 alias untargz 'tar -zxvf'
 
