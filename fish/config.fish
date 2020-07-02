@@ -142,23 +142,22 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 # TOOLS ----------------------------------------------------------------------------------
 
 ## os specific
-
 switch (uname)
   case Darwin
     ### brew
     abbr brewup 'brew update ; brew upgrade ; brew cask outdated | xargs -I _ brew cask upgrade _'
     ### jenv
-    set PATH '~/.jenv/bin' $PATH
+    set -p PATH '~/.jenv/bin'
     status --is-interactive; and source (jenv init -|psub)
 end
 
 ## everywhere
-
 thefuck --alias | source
 
-abbr cljtree 'tree -FI *.class --prune' # tree that woks cleanly for clojure projects
-
 alias ftp 'ftp -i' # no interactive prompt
+
+abbr cljtree 'tree -aFI ".git|target"' # tree that works cleanly for clojure projects
+abbr etree 'tree -aFI ".git|elpa|quelpa"' # tree that works cleanly for emacs
 
 alias untargz 'tar -zxvf'
 
