@@ -189,8 +189,10 @@ thefuck --alias | source
 
 alias ftp 'ftp -i' # no interactive prompt
 
-abbr cltree 'tree -aFI ".git|target"'      # for (cl)ojure projects
-abbr emtree 'tree -aFI ".git|elpa|quelpa"' # for (em)acs configs
+alias tree 'tree -CF'
+alias trea 'tree -a'
+abbr cltree 'trea -I ".git|target"'      # for (cl)ojure projects
+abbr emtree 'trea -I ".git|elpa|quelpa"' # for (em)acs configs
 
 alias untargz 'tar -zxvf'
 
