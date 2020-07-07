@@ -16,3 +16,6 @@ ln -sf `pwd`/fish/config.fish ~/.config/fish/conf.d/my_config.fish
 
 # clojure tooling
 ln -sf `pwd`/clojure/leiningen/profiles.clj ~/.lein/profiles.clj
+
+# elixir tooling
+ln -sf `pwd`/elixir/i.ex ~/.iex.exs

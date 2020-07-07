@@ -175,6 +175,7 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 # TOOLS ----------------------------------------------------------------------------------
 
 ## os specific
+
 switch (uname)
   case Darwin
     ### brew
@@ -185,12 +186,13 @@ switch (uname)
 end
 
 ## everywhere
+
 thefuck --alias | source
 
 alias ftp 'ftp -i' # no interactive prompt
 
-alias tree 'tree -CF'
-alias trea 'tree -a'
+alias tree 'tree -CF' # add colours and formatting
+alias trea 'tree -a'  # variant for 'all'
 abbr cltree 'trea -I ".git|target"'      # for (cl)ojure projects
 abbr emtree 'trea -I ".git|elpa|quelpa"' # for (em)acs configs
 
