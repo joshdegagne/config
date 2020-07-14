@@ -3,7 +3,7 @@
 ## parameters
 set delim '<>'
 set prompt_symbol '  '
-set time_format " %Y:%b:%d:%Z:%H:%M:%S"
+set time_format "%Y:%b:%d:%Z:%H:%M:%S"
 set delim_colour black
 set prompt_pwd_colour brred
 set prompt_symbol_colour normal
@@ -29,8 +29,9 @@ function fish_prompt
   # info line(s)
   info_format $terminal_width $info
   # pwd prompt line
-  printf " %s%s" (set_color $prompt_pwd_colour; prompt_pwd) \
-                 (set_color $prompt_symbol_colour; echo $prompt_symbol)
+  printf "%s%s" \
+         (set_color $prompt_pwd_colour; prompt_pwd) \
+         (set_color $prompt_symbol_colour; echo $prompt_symbol)
 end
 
 function prompt_pwd --description 'Print the current working directory, shortened to fit the prompt'
