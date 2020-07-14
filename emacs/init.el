@@ -1,4 +1,4 @@
-;;; FOUNDATION -----------------------------------------------------------------
+;;; FOUNDATION ---------------------------------------------------------------------------
 
 (setq user-full-name "Joshua DeGagné"
       user-mail-address "joshdegagne@gmail.com")
@@ -67,7 +67,7 @@
 
 (use-package diminish :ensure t)
 
-;;; MAC ------------------------------------------------------------------------
+;;; MAC ----------------------------------------------------------------------------------
 
 (when (equal system-type 'darwin)
   ;; move to trash when deleting stuff
@@ -93,7 +93,7 @@
   ;; not tested with emacs26 (requires a patched Emacs version for multi-color font support)
   (set-fontset-font "fontset-default" 'unicode "Apple Color Emoji" nil 'prepend))
 
-;;; ELISP ----------------------------------------------------------------------
+;;; ELISP --------------------------------------------------------------------------------
 
 (defmacro diminish-major-mode (mode new-name)
   `(add-hook (intern (concat (symbol-name ,mode) "-hook"))
@@ -108,7 +108,7 @@
 (use-package dash :ensure t)
 (use-package dash-functional :ensure t)
 
-;;; BUFFERS --------------------------------------------------------------------
+;;; BUFFERS ------------------------------------------------------------------------------
 
 ;; auto refresh buffers
 (setq global-auto-revert-mode t
@@ -147,9 +147,9 @@
 (when (display-graphic-p)
   (setq frame-title-format '(:eval (my-title-bar-format))))
 
-;;; DISPLAY --------------------------------------------------------------------
+;;; DISPLAY ------------------------------------------------------------------------------
 
-(set-frame-font "Iosevka Nerd Font Mono 19")
+(set-frame-font "Iosevka Nerd Font Mono 18")
 
 ;; highlight line at point
 (global-hl-line-mode 1)
@@ -182,7 +182,7 @@
         x-underline-at-descent-line t)
   (load-theme 'solarized-light 'no-confirm))
 
-;;; KEYS -----------------------------------------------------------------------
+;;; KEYS ---------------------------------------------------------------------------------
 ;;(`bind-key` is only available after use-package)
 
 ;; zoom
@@ -194,7 +194,7 @@
 (use-package beginend :ensure t
   :config (beginend-setup-all))
 
-;;; SEARCH/SUGGESTION ----------------------------------------------------------
+;;; SEARCH/SUGGESTION --------------------------------------------------------------------
 
 ;; compound key suggestion
 (use-package which-key :ensure t
@@ -231,7 +231,7 @@
 ;; (this mode has versions for avy, helm, popup, etc...)
 (use-package flyspell-correct-ivy :ensure t :after flyspell-correct)
 
-;;; FILES ----------------------------------------------------------------------
+;;; FILES --------------------------------------------------------------------------------
 (put 'dired-find-alternate-file 'disabled nil)
 (use-package dired+ :ensure t
   :quelpa (dired+ :fetcher github :repo "emacsmirror/dired-plus")
@@ -247,7 +247,7 @@
   :config (setq magit-display-buffer-function
                 #'magit-display-buffer-fullframe-status-v1))
 
-;;; EDITING --------------------------------------------------------------------
+;;; EDITING ------------------------------------------------------------------------------
 
 (setq-default indent-tabs-mode nil) ; Always use spaces for indent
 (setq tab-width 2
@@ -321,7 +321,7 @@
 (use-package expand-region :ensure t
   :bind ("C-=" . er/expand-region))
 
-;;; PROGRAMMING ----------------------------------------------------------------
+;;; PROGRAMMING --------------------------------------------------------------------------
 
 (use-package coffee-mode :ensure t
   :custom (coffee-tab-width 2)
@@ -384,7 +384,7 @@
 (use-package elixir-mode :ensure t
   :config (diminish-major-mode 'elixir-mode "exλ"))
 
-;;; DATA -----------------------------------------------------------------------
+;;; DATA ---------------------------------------------------------------------------------
 
 
 (add-hook 'json-mode-hook
@@ -401,7 +401,7 @@
 (use-package nix-mode
   :mode "\\.nix\\'")
 
-;;; TEXT -----------------------------------------------------------------------
+;;; TEXT ---------------------------------------------------------------------------------
 
 (use-package markdown-mode :ensure t
   :commands (markdown-mode gfm-mode)
@@ -410,7 +410,7 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "pandoc"))
 
-;;; SERVER (LAST) --------------------------------------------------------------
+;;; SERVER (LAST) ------------------------------------------------------------------------
 
 (require 'server)
 (if (not (server-running-p)) (server-start))
