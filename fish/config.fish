@@ -2,10 +2,13 @@
 
 ## parameters
 set delim '<>'
+set prompt_symbol '  '
+set time_format " %Y:%b:%d:%Z:%H:%M:%S"
 set delim_colour black
+set prompt_pwd_colour brred
+set prompt_symbol_colour normal
+set colour_order magenta brmagenta blue cyan green yellow
 set delim_width (string length $delim)
-set colour_order magenta brmagenta blue cyan green yellow brred
-set time_format "%Y:%b:%d:%Z:%H:%M:%S"
 set fish_prompt_pwd_raw_levels 2
 set fish_prompt_pwd_dir_length 2
 
@@ -26,7 +29,8 @@ function fish_prompt
   # info line(s)
   info_format $terminal_width $info
   # pwd prompt line
-  printf "%s%s" (set_color brred; prompt_pwd) (set_color normal; echo '|> ')
+  printf " %s%s" (set_color $prompt_pwd_colour; prompt_pwd) \
+                 (set_color $prompt_symbol_colour; echo $prompt_symbol)
 end
 
 function prompt_pwd --description 'Print the current working directory, shortened to fit the prompt'
@@ -193,8 +197,9 @@ alias ftp 'ftp -i' # no interactive prompt
 
 alias tree 'tree -CF' # add colours and formatting
 alias trea 'tree -a'  # variant for 'all'
-abbr cltree 'trea -I ".git|target"'      # for (cl)ojure projects
-abbr emtree 'trea -I ".git|elpa|quelpa"' # for (em)acs configs
+abbr emtree 'trea -I ".git|elpa|quelpa"'            # for (em)acs configs
+abbr cltree 'trea -I ".git|target"'                 # for (cl)ojure projects
+abbr eltree 'trea -I ".git|.elixir_ls|_build|deps"' # for (el)ixir projects
 
 alias untargz 'tar -zxvf'
 

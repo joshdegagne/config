@@ -1,10 +1,10 @@
 # STYLE
 ## font
-font_family      Fira Code
-bold_font        Fira Code Bold
-italic_font      Fira Sans Italic
-bold_italic_font Fira Sans Bold Italic
-font_size        17.0
+font_family      Iosevka Nerd Font Mono
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+font_size        19.0
 active_tab_font_style   bold
 inactive_tab_font_style italic
 tab_bar_style      powerline

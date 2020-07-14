@@ -91,12 +91,7 @@
   ;; Useful for https://github.com/dunn/company-emoji
   ;; https://www.reddit.com/r/emacs/comments/8ph0hq/i_have_converted_from_the_mac_port_to_the_ns_port/
   ;; not tested with emacs26 (requires a patched Emacs version for multi-color font support)
-  (if (version< "27.0" emacs-version)
-      (set-fontset-font "fontset-default"
-                        'unicode "Apple Color Emoji" nil 'prepend)
-    (set-fontset-font t
-                      'symbol
-                      (font-spec :family "Apple Color Emoji") nil 'prepend)))
+  (set-fontset-font "fontset-default" 'unicode "Apple Color Emoji" nil 'prepend))
 
 ;;; ELISP ----------------------------------------------------------------------
 
@@ -154,6 +149,8 @@
 
 ;;; DISPLAY --------------------------------------------------------------------
 
+(set-frame-font "Iosevka Nerd Font Mono 19")
+
 ;; highlight line at point
 (global-hl-line-mode 1)
 
@@ -184,13 +181,6 @@
         solarized-scale-org-headlines nil
         x-underline-at-descent-line t)
   (load-theme 'solarized-light 'no-confirm))
-
-;; font
-(when (window-system)
-  (set-frame-font "Fira Code 17")
-  (use-package fira-code-mode :ensure t
-    :diminish ""
-    :hook (prog-mode text-mode)))
 
 ;;; KEYS -----------------------------------------------------------------------
 ;;(`bind-key` is only available after use-package)
@@ -242,7 +232,7 @@
 (use-package flyspell-correct-ivy :ensure t :after flyspell-correct)
 
 ;;; FILES ----------------------------------------------------------------------
-
+(put 'dired-find-alternate-file 'disabled nil)
 (use-package dired+ :ensure t
   :quelpa (dired+ :fetcher github :repo "emacsmirror/dired-plus")
   :init (diredp-toggle-find-file-reuse-dir 1))
@@ -265,10 +255,6 @@
       shift-select-mode nil
       mouse-yank-at-point t)
 (delete-selection-mode)
-
-;; support the "dangerous" commands :-)
-(put 'downcase-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
 
 (use-package undo-tree :ensure t
   :diminish ""
