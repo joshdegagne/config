@@ -149,7 +149,8 @@
 
 ;;; DISPLAY ------------------------------------------------------------------------------
 
-(set-frame-font "Iosevka Nerd Font Mono 18")
+;;(set-frame-font "Iosevka Nerd Font Mono 18")
+(set-frame-font "Monofur Nerd Font Mono 19")
 
 ;; highlight line at point
 (global-hl-line-mode 1)
