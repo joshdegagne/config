@@ -184,7 +184,7 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 switch (uname)
   case Darwin
     ### brew
-    abbr brewup 'brew update ; brew upgrade ; brew cask upgrade (brew cask outdated --greedy --json | jq --raw-output \'.[] | select((.installed_versions == "latest" and .current_version == "latest")| not) | .name\' | xargs -I _ printf "%s " _)'
+    abbr brewup 'brew update ; brew upgrade ; brew cask outdated --greedy --json | jq --raw-output \'.[] | select((.installed_versions == "latest" and .current_version == "latest")| not) | .name\' | xargs -I _ brew cask upgrade _'
     ### jenv
     set -p PATH '~/.jenv/bin'
     status --is-interactive; and source (jenv init -|psub)
