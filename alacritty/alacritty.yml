@@ -1,5 +1,8 @@
+# Sample file that explains the options available here.
+# https://github.com/alacritty/alacritty/blob/master/alacritty.yml
+
 window:
-  padding: { x: 6 , y: 6 }
+  padding: { x: 5 , y: 5 }
   title: Alacritty
   decorations: none
   class: { instance: Alacritty , general: Alacritty } # Window class (Linux/BSD only)
@@ -12,7 +15,6 @@ font:
   # size:   18.0
   normal: { family: Monofur Nerd Font Mono }
   size:   21.0
-
 
 key_bindings:
   # control commands
