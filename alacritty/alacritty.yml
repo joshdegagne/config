@@ -16,9 +16,12 @@ font:
 
 key_bindings:
   # control commands
-  - { key: N , mods: Control|Shift , action: SpawnNewInstance }
-  - { key: K , mods: Control|Shift , action: ClearHistory     }
-  - { key: Q , mods: Control|Shift , action: Quit             }
+  - { key: N         , mods: Control|Shift , action: SpawnNewInstance }
+  - { key: K         , mods: Control|Shift , action: ClearHistory     }
+  - { key: Q         , mods: Control|Shift , action: Quit             }
+  - { key: Equals    , mods: Control|Shift , action: IncreaseFontSize }
+  - { key: Minus     , mods: Control|Shift , action: DecreaseFontSize }
+  - { key: Backslash , mods: Control|Shift , action: ResetFontSize    }
   # text movement
   - { key: F , mods: Alt , chars: "\x1bf" } # forward word
   - { key: B , mods: Alt , chars: "\x1bb" } # backward word
