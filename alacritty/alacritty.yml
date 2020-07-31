@@ -2,8 +2,8 @@
 # https://github.com/alacritty/alacritty/blob/master/alacritty.yml
 
 window:
-  padding: { x: 5 , y: 5 }
-  title: Alacritty
+  padding:     { x: 5 , y: 5 }
+  title:       Alacritty
   decorations: none
   class: { instance: Alacritty , general: Alacritty } # Window class (Linux/BSD only)
 
@@ -11,15 +11,14 @@ scrolling: { history: 10000 }
 
 font:
   offset: { x: 1 , y: 1 }
-  # normal: { family: Iosevka Nerd Font Mono , style: Light }
-  # size:   18.0
   normal: { family: Monofur Nerd Font Mono }
   size:   21.0
+  # normal: { family: Iosevka Nerd Font Mono , style: Light }
+  # size:   18.0
 
 key_bindings:
   # control commands
   - { key: N         , mods: Control|Shift , action: SpawnNewInstance }
-  - { key: K         , mods: Control|Shift , action: ClearHistory     }
   - { key: Q         , mods: Control|Shift , action: Quit             }
   - { key: Equals    , mods: Control|Shift , action: IncreaseFontSize }
   - { key: Minus     , mods: Control|Shift , action: DecreaseFontSize }
@@ -30,34 +29,100 @@ key_bindings:
   - { key: D , mods: Alt , chars: "\x1bd" } # delete word
 
 colour-schemes:
-  solarized-light: &solarized-light
-    # Default colors
+  solarized:
+    base:
+      normal: &solarized-base-normal
+        black:   '#073642' # base02
+        red:     '#dc322f' # red
+        green:   '#859900' # green
+        yellow:  '#b58900' # yellow
+        blue:    '#268bd2' # blue
+        magenta: '#d33682' # magenta
+        cyan:    '#2aa198' # cyan
+        white:   '#eee8d5' # base2
+      bright: &solarized-base-bright
+        black:   '#002b36' # base03
+        red:     '#cb4b16' # orange
+        green:   '#586e75' # base01
+        yellow:  '#657b83' # base00
+        blue:    '#839496' # base0
+        magenta: '#6c71c4' # violet
+        cyan:    '#93a1a1' # base1
+        white:   '#fdf6e3' # base3
+
+    light: &solarized-light
+      primary:
+        background: '#fdf6e3' # base3
+        foreground: '#657b83' # base00
+      cursor:
+        text:   '#fdf6e3' # base3
+        cursor: '#657b83' # base00
+      normal: *solarized-base-normal
+      bright: *solarized-base-bright
+
+    dark: &solarized-dark
+      primary:
+        background: '#002b36' # base03
+        foreground: '#839496' # base0
+      cursor:
+        text:   '#002b36' # base03
+        cursor: '#839496' # base0
+      normal: *solarized-base-normal
+      bright: *solarized-base-bright
+
+  gruvbox:
+    light: &gruvbox-light
+      primary:
+        hard-contrast-bg: &hc '#f9f5d7'
+        soft-contrast-bg: &sc '#f2e5bc'
+        background: *hc
+        foreground: '#3c3836'
+      normal:
+        black:   '#7c6f64'
+        red:     '#cc241d'
+        green:   '#98971a'
+        yellow:  '#d79921'
+        blue:    '#458588'
+        magenta: '#b16286'
+        cyan:    '#689d6a'
+        white:   '#fbf1c7'
+      bright:
+        black:   '#3c3836'
+        red:     '#9d0006'
+        green:   '#79740e'
+        yellow:  '#b57614'
+        blue:    '#076678'
+        magenta: '#8f3f71'
+        cyan:    '#427b58'
+        white:   '#928374'
+
+  jellybeans: &jellybeans
     primary:
-      background: '#fdf6e3' # base3
-      foreground: '#657b83' # base00
-    # Cursor colors
+      background: '#161616'
+      foreground: '#e4e4e4'
     cursor:
-      text:   '#fdf6e3' # base3
-      cursor: '#657b83' # base00
-    # Normal colors
+      text: '#feffff'
+      cursor: '#ffb472'
     normal:
-      black:   '#073642' # base02
-      red:     '#dc322f' # red
-      green:   '#859900' # green
-      yellow:  '#b58900' # yellow
-      blue:    '#268bd2' # blue
-      magenta: '#d33682' # magenta
-      cyan:    '#2aa198' # cyan
-      white:   '#eee8d5' # base2
-    # Bright colors
+      black:   '#a3a3a3'
+      red:     '#e98885'
+      green:   '#a3c38b'
+      yellow:  '#ffc68d'
+      blue:    '#a6cae2'
+      magenta: '#e7cdfb'
+      cyan:    '#00a69f'
+      white:   '#e4e4e4'
     bright:
-      black:   '#002b36' # base03
-      red:     '#cb4b16' # orange
-      green:   '#586e75' # base01
-      yellow:  '#657b83' # base00
-      blue:    '#839496' # base0
-      magenta: '#6c71c4' # violet
-      cyan:    '#93a1a1' # base1
-      white:   '#fdf6e3' # base3
+      black:   '#c8c8c8'
+      red:     '#ffb2b0'
+      green:   '#c8e2b9'
+      yellow:  '#ffe1af'
+      blue:    '#bddff7'
+      magenta: '#fce2ff'
+      cyan:    '#0bbdb6'
+      white:   '#feffff'
+    selection:
+      text: '#5963a2'
+      background: '#f6f6f6'
 
 colors: *solarized-light
