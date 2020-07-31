@@ -1,18 +1,18 @@
 window:
-  class: { instance: Alacritty , general: Alacritty } # Window class (Linux/BSD only)
+  padding: { x: 6 , y: 6 }
   title: Alacritty
   decorations: none
-  padding: { x: 6 , y: 6 }
+  class: { instance: Alacritty , general: Alacritty } # Window class (Linux/BSD only)
 
-scrolling:
-  history: 10000
+scrolling: { history: 10000 }
 
 font:
+  offset: { x: 1 , y: 1 }
   # normal: { family: Iosevka Nerd Font Mono , style: Light }
   # size:   18.0
   normal: { family: Monofur Nerd Font Mono }
   size:   21.0
-  offset: { x: 1 , y: 1 }
+
 
 key_bindings:
   # control commands
