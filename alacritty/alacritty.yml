@@ -1,17 +1,18 @@
 window:
+  class: { instance: Alacritty , general: Alacritty } # Window class (Linux/BSD only)
+  title: Alacritty
   decorations: none
+  padding: { x: 6 , y: 6 }
 
 scrolling:
   history: 10000
 
 font:
-  # normal:
-  #   family: Iosevka Nerd Font Mono
-  #   style: Light
-  # size: 18.0
-  normal:
-    family: Monofur Nerd Font Mono
-  size: 21.0
+  # normal: { family: Iosevka Nerd Font Mono , style: Light }
+  # size:   18.0
+  normal: { family: Monofur Nerd Font Mono }
+  size:   21.0
+  offset: { x: 1 , y: 1 }
 
 colour-schemes:
   solarized-light: &solarized-light
