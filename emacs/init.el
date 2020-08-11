@@ -149,6 +149,9 @@
 
 ;;; DISPLAY ------------------------------------------------------------------------------
 
+(setq display-fill-column-indicator-column 90)
+(add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
+
 ;;(set-frame-font "Iosevka Nerd Font Mono 18")
 (set-frame-font "Monofur Nerd Font Mono 19")
 
