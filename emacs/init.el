@@ -142,7 +142,7 @@
          (window-config-name (nth 2 window-config))
          (num-slots (length window-configs)))
     (concat window-config-name " [" (number-to-string current-slot)
-            "/" (number-to-string num-slots) "] | " "%b")))
+            "/" (number-to-string num-slots) "] " "%b")))
 
 (when (display-graphic-p)
   (setq frame-title-format '(:eval (my-title-bar-format))))
