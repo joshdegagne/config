@@ -207,7 +207,8 @@
 
 ;; ivy, counsel and swiper for completion
 (use-package counsel :ensure t
-  ;;need 27 :diminish ('ivy-mode "🔰")
+  ;; doesn't play will with powerline
+  ;; :diminish ('ivy-mode "🔰")
   :init (ivy-mode 1)
   :config (setq ivy-use-virtual-buffers t
                 enable-recursive-minibuffers t
@@ -325,11 +326,10 @@
 ;;; PROGRAMMING --------------------------------------------------------------------------
 
 (use-package coffee-mode :ensure t
-  :custom (coffee-tab-width 2)
-  :config (diminish-major-mode 'coffee-mode "☕𝒿𝓈"))
+  :config (diminish-major-mode 'coffee-mode "cs")
+  :custom (coffee-tab-width 2))
 
 (use-package fish-mode :ensure t
-  ;; need 27 :config (diminish-major-mode 'fish-mode "🐟")
   :custom (fish-indent-offset 2))
 
 (use-package dockerfile-mode :ensure t)
