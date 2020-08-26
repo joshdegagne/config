@@ -362,6 +362,8 @@
         cider-switch-to-repl-command 'cider-switch-to-relevant-repl-buffer)
   (define-clojure-indent
     (match 1)
+    (-> 1)
+    (->> 1)
     ;; compojure
     (context 2)
     (POST 2))
