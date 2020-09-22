@@ -187,7 +187,11 @@
   (load-theme 'solarized-light 'no-confirm))
 
 ;;; KEYS ---------------------------------------------------------------------------------
-;;(`bind-key` is only available after use-package)
+;; `bind-key` is only available after use-package
+
+;; delete all whitespace at once (works with smart parens)
+(use-package hungry-delete :ensure t
+  :config (global-hungry-delete-mode))
 
 ;; zoom
 (global-unset-key (kbd "C-x C-+"))
@@ -197,6 +201,9 @@
 ;; make M-< and M-> sensible for common modes
 (use-package beginend :ensure t
   :config (beginend-setup-all))
+
+;; prefer directionless searching
+(global-unset-key (kbd "C-r"))
 
 ;;; SEARCH/SUGGESTION --------------------------------------------------------------------
 
