@@ -108,6 +108,8 @@
 (use-package dash :ensure t)
 (use-package dash-functional :ensure t)
 
+(use-package free-keys :ensure t)
+
 ;;; BUFFERS ------------------------------------------------------------------------------
 
 ;; auto refresh buffers
@@ -234,9 +236,10 @@
                 ispell-extra-args '("--sug-mode=ultra"
                                     "--camel-case"
                                     "--lang=en_CA"))
-  :hook ((prog-mode text-mode) . flyspell-mode))
+  :hook ((prog-mode text-mode) . flyspell-mode)
+  :config (bind-key "C-." nil flyspell-mode-map))
 
-(use-package flyspell-correct :ensure t
+(use-package flyspell-correct :ensure t :after flyspell
   :after flyspell
   :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
 
@@ -303,9 +306,9 @@
   :hook (prog-mode . subword-mode))
 
 ;; completion box
-(use-package company-emoji :ensure t)
-(use-package company-quickhelp :ensure t
-  :config (company-quickhelp-mode 1))
+;;(use-package company-emoji :ensure t)
+;;(use-package company-quickhelp :ensure t
+;;  :config (company-quickhelp-mode 1))
 (use-package company :ensure t
   :diminish " α"
   :config
@@ -318,18 +321,46 @@
 
 ;; keep things balanced automatically
 ;; needs help with elisp quoting
-(use-package  smartparens :ensure t
+(use-package smartparens :ensure t
   :diminish "()"
   :hook ((prog-mode . smartparens-mode)
-         (prog-mode . smartparens-strict-mode))
+         (prog-mode . smartparens-strict-mode)
+         (cider-repl-mode . smartparens-mode)
+         (cider-repl-mode . smartparens-strict-mode))
   :config
-  (require 'smartparens-config)
-  ;; highlights the paren that matches paren at point
-  (show-smartparens-global-mode t)
-  ;; :bind ; need to add shortcuts for stuff (slurp, barf, wrap, unwrap, etc...)
-  )
+  (require 'smartparens-config) ;; default config for different languages.
+  (show-smartparens-global-mode t) ;; highlights the paren that matches paren at point
+  (bind-key "C-<left>" nil smartparens-mode-map)
+  (bind-key "C-<right>" nil smartparens-mode-map)
+  (bind-key "C-M-u" nil smartparens-mode-map)
+  (bind-key "C-M-S-u" nil smartparens-mode-map)
+  :bind (;; --- navigation ---
+         ("C-M-a" . sp-beginning-of-sexp)
+         ("C-M-e" . sp-end-of-sexp)
+         ("C-M-S-a" . beginning-of-defun)
+         ("C-M-S-e" . end-of-defun)
+         ("C-M-f" . sp-forward-sexp)
+         ("C-M-b" . sp-backward-sexp)
+         ; unshifted operates on the left, shifted operates on the right
+         ("C-M-n" . sp-down-sexp)
+         ("C-M-S-n" . sp-up-sexp)
+         ("C-M-p" . sp-backward-up-sexp)
+         ("C-M-S-p" . sp-backward-down-sexp)
+         ;; --- manipulation --
+         ("C-M-r" . sp-rewrap-sexp)
+         ("C-M-d" . sp-splice-sexp)
+         ("C-M-," . sp-backward-slurp-sexp)
+         ("C-M-." . sp-forward-slurp-sexp)
+         ("C-M-<" . sp-backward-barf-sexp)
+         ("C-M->" . sp-forward-barf-sexp)
+         ("C-M-;" . sp-add-to-previous-sexp)
+         ("C-M-'" . sp-add-to-next-sexp)
+         ("C-M-/" . sp-split-sexp)
+         ("C-M-?" . sp-join-sexp)
+         ;; --- selection -----
+         ("C-M-}" . sp-select-next-thing)
+         ("C-M-{" . sp-select-previous-thing-exchange)))
 
-;; semantic selections
 (use-package expand-region :ensure t
   :bind ("C-=" . er/expand-region))
 
@@ -371,6 +402,11 @@
     (match 1)
     (-> 1)
     (->> 1)
+    (some-> 1)
+    (some->> 1)
+    (cond-> 1)
+    (cond->> 1)
+    (as-> 2)
     ;; compojure
     (context 2)
     (POST 2))
