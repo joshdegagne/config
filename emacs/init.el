@@ -291,7 +291,10 @@ This function is intended for use with `ivy-ignore-buffers'."
 
 ;; "tree" jumping
 (use-package avy :ensure t
-  :bind (("C-." . avy-goto-word-or-subword-1)))
+  :config
+  (setq avy-timeout-seconds 0.5)
+  (setq avy-keys '(?a ?s ?h ?t ?n ?e ?o ?i)) ;; workman layout
+  :bind (("C-." . avy-goto-char-timer)))
 
 ;; jump to symbol @ point
 (use-package smartscan :ensure t
