@@ -219,18 +219,31 @@
 (use-package smex :ensure t
   :init (setq smex-save-file (concat user-emacs-directory ".smex-items")))
 
+(defun d/ignore-dired-buffers (str)
+  "Return non-nil if STR names a Dired buffer.
+This function is intended for use with `ivy-ignore-buffers'."
+  (let ((buf (get-buffer str)))
+    (and buf (eq (buffer-local-value 'major-mode buf) 'dired-mode))))
+
 ;; ivy, counsel and swiper for completion
 (use-package counsel :ensure t
-  ;; doesn't play will with powerline
-  ;; :diminish ('ivy-mode "🔰")
   :init (ivy-mode 1)
-  :config (setq ivy-use-virtual-buffers t
-                enable-recursive-minibuffers t
-                ivy-count-format "(%d/%d) " ; space before end of string
-                ivy-initial-inputs-alist nil ; don't insert leading '^'
-                )
+  :config
+  (setq ivy-use-virtual-buffers t
+        ivy-use-selectable-prompt t
+        enable-recursive-minibuffers t
+        ivy-count-format "(%d/%d) " ; space before end of string
+        ivy-initial-inputs-alist nil ; don't insert leading '^'
+        ivy-extra-directories nil)
+  (add-to-list 'ivy-ignore-buffers #'d/ignore-dired-buffers)
   :bind (("C-s" . swiper-isearch)
-         ("M-y" . counsel-yank-pop)))
+         ("C-r" . ivy-resume)
+         ("M-y" . counsel-yank-pop)
+         :map ivy-minibuffer-map
+         ("<return>" . ivy-alt-done)
+         ;; ("C-f" . )
+         ;; ("C-b" . )
+         ))
 
 ;; spelling
 (use-package flyspell
@@ -249,10 +262,6 @@
 (use-package flyspell-correct-ivy :ensure t :after flyspell-correct)
 
 ;;; FILES --------------------------------------------------------------------------------
-(put 'dired-find-alternate-file 'disabled nil)
-(use-package dired+ :ensure t
-  :quelpa (dired+ :fetcher github :repo "emacsmirror/dired-plus")
-  :init (diredp-toggle-find-file-reuse-dir 1))
 
 ;; view archives (ensure read-only to avoid editing jar files)
 (use-package arc-mode :ensure t
