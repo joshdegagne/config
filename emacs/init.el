@@ -195,17 +195,19 @@
 (use-package hungry-delete :ensure t
   :config (global-hungry-delete-mode))
 
-;; zoom
-(global-unset-key (kbd "C-x C-+"))
-(bind-key "C-s-+" 'text-scale-increase)
-(bind-key "C-s--" 'text-scale-decrease)
-
 ;; make M-< and M-> sensible for common modes
 (use-package beginend :ensure t
   :config (beginend-setup-all))
 
-;; prefer directionless searching
-(global-unset-key (kbd "C-r"))
+(global-unset-key (kbd "C-x C-+"))
+(bind-key "C-s-+" 'text-scale-increase)
+(bind-key "C-s--" 'text-scale-decrease)
+
+(global-unset-key (kbd "C-x C-f"))
+(bind-key "C-x f" 'find-file)
+
+(global-unset-key (kbd "C-r")) ;; reverse-search
+(global-unset-key (kbd "C-z")) ;; suspend-frame
 
 ;;; SEARCH/SUGGESTION --------------------------------------------------------------------
 
