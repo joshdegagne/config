@@ -296,6 +296,22 @@ This function is intended for use with `ivy-ignore-buffers'."
   (setq avy-keys '(?a ?s ?h ?t ?n ?e ?o ?i)) ;; workman layout
   :bind (("C-." . avy-goto-char-timer)))
 
+(use-package ace-window :ensure t
+  :config
+  (setq aw-keys '(?a ?s ?h ?t ?n ?e ?o ?i)) ;; workman layout
+  (setq aw-dispatch-alist ;; avoid the workman home row
+        '((?k aw-delete-window "Delete Window")
+          (?m aw-swap-window "Swap Windows")
+          (?w aw-copy-window "Copy Window")
+          (?p aw-flip-window "Go to Previous Window")
+          (?f aw-split-window-fair "Split Fair Window")
+          (?v aw-split-window-vert "Split Vert Window")
+          (?c aw-split-window-horz "Split Horz Window")
+          (?l delete-other-windows "Delete Other Windows")
+          (?y aw-transpose-frame "Yeet Window to Other Frame")
+          (?? aw-show-dispatch-help)))
+  :bind (("M-o" . ace-window)))
+
 ;; jump to symbol @ point
 (use-package smartscan :ensure t
   :hook (prog-mode . smartscan-mode)
