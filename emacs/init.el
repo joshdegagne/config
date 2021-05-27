@@ -358,6 +358,7 @@ This function is intended for use with `ivy-ignore-buffers'."
          ("C-M-p" . sp-backward-up-sexp)
          ("C-M-S-p" . sp-backward-down-sexp)
          ;; --- manipulation --
+         ("C-M-<backspace>" . sp-backward-kill-sexp)
          ("C-M-r" . sp-rewrap-sexp)
          ("C-M-d" . sp-splice-sexp)
          ("C-M-," . sp-backward-slurp-sexp)
