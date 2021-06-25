@@ -295,9 +295,9 @@
 ;; "tree" jumping
 (use-package avy :ensure t
   :config
-  (setq avy-timeout-seconds 0.5)
+  (setq avy-timeout-seconds 0.3)
   (setq avy-keys '(?a ?s ?h ?t ?n ?e ?o ?i)) ;; workman layout
-  :bind (("C-." . avy-goto-char-timer)))
+  :bind (("C-o" . avy-goto-char-timer)))
 
 (use-package ace-window :ensure t
   :config
