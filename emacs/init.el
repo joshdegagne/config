@@ -237,7 +237,9 @@
         ivy-initial-inputs-alist nil ; don't insert leading '^'
         ivy-extra-directories nil)
   (add-to-list 'ivy-ignore-buffers #'d/ignore-dired-buffers)
-  :bind (("C-s" . swiper-isearch)
+  (ivy-configure 'counsel-imenu :update-fn 'auto)
+  :bind (("M-i" . counsel-imenu)
+         ("C-s" . swiper-isearch)
          ("C-r" . ivy-resume)
          ("M-y" . counsel-yank-pop)
          :map ivy-minibuffer-map
