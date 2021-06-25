@@ -15,13 +15,12 @@
                   "ancient" ["update-in" ":plugins" "conj" "[lein-ancient \"0.6.15\" :exclusions [org.clojure/clojure]]" "--" "ancient"]}}
  :repl {:repl-options {:timeout 12000000}
         :jvm-opts ["-XX:-OmitStackTraceInFastThrow"]
-        :plugins [[nrepl/nrepl "0.7.0"]
-                  [cider/cider-nrepl "0.25.1"]
-                  [refactor-nrepl "2.5.0"]]
+        :plugins [[nrepl/nrepl "0.8.3"]
+                  [cider/cider-nrepl "0.26.0"]
+                  [refactor-nrepl "2.5.1"]]
         :dependencies [;; debugging
-                       [jsofra/data-scope "0.1.2"]
-                       [philoskim/debux "0.6.5"]
-                       [org.clojure/tools.trace "0.7.10"]
-                       [org.clojure/tools.namespace "1.0.0"]
+                       [philoskim/debux "0.7.9"]
+                       [org.clojure/tools.trace "0.7.11"]
+                       [org.clojure/tools.namespace "1.1.0"]
                        ;; visualization
                        [rhizome "0.2.9"]]}}
