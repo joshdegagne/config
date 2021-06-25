@@ -295,18 +295,23 @@
   (global-undo-tree-mode)
   (setq undo-tree-show-minibuffer-help t))
 
+(setq qwerty/home-row '(?a ?s ?d ?f ?j ?k ?l ?\;))
+(setq workman/home-row '(?a ?s ?h ?t ?n ?e ?o ?i))
+
+(setq home-row qwerty/home-row)
+
 ;; "tree" jumping
 (use-package avy :ensure t
   :config
   (setq avy-timeout-seconds 0.3)
-  (setq avy-keys '(?a ?s ?h ?t ?n ?e ?o ?i)) ;; workman layout
+  (setq avy-keys home-row)
   :bind (("C-o" . avy-goto-char-timer)))
 
 (use-package ace-window :ensure t
   :config
-  (setq aw-keys '(?a ?s ?h ?t ?n ?e ?o ?i)) ;; workman layout
-  (setq aw-dispatch-alist ;; avoid the workman home row
-        '((?k aw-delete-window "Delete Window")
+  (setq aw-keys home-row)
+  (setq aw-dispatch-alist ;; avoid home row keys (for both layouts)
+        '((?x aw-delete-window "Delete Window")
           (?m aw-swap-window "Swap Windows")
           (?w aw-copy-window "Copy Window")
           (?p aw-flip-window "Go to Previous Window")
