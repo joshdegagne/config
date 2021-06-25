@@ -235,7 +235,10 @@
         enable-recursive-minibuffers t
         ivy-count-format "(%d/%d) " ; space before end of string
         ivy-initial-inputs-alist nil ; don't insert leading '^'
-        ivy-extra-directories nil)
+        ivy-extra-directories nil
+        confirm-nonexistent-file-or-buffer t
+        ivy-wrap t
+        ivy-height 13)
   (add-to-list 'ivy-ignore-buffers #'d/ignore-dired-buffers)
   (ivy-configure 'counsel-imenu :update-fn 'auto)
   :bind (("M-i" . counsel-imenu)
