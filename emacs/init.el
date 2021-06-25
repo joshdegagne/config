@@ -463,6 +463,8 @@
                           (clj-refactor-mode 1)
                           (cljr-add-keybindings-with-prefix "C-c M-r"))))
 
+(use-package cljsbuild-mode :ensure t)
+
 ;; elixir --------------------------------------------------
 
 (use-package elixir-mode :ensure t
