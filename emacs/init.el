@@ -431,18 +431,20 @@
         cider-repl-history-file (concat user-emacs-directory "cider-history")
         cider-repl-use-clojure-font-lock t
         cider-switch-to-repl-command 'cider-switch-to-relevant-repl-buffer)
-  (define-clojure-indent
-    (match 1)
-    (-> 1)
-    (->> 1)
-    (some-> 1)
-    (some->> 1)
-    (cond-> 1)
-    (cond->> 1)
-    (as-> 2)
-    ;; compojure
-    (context 2)
-    (POST 2))
+  ;;(define-clojure-indent
+  ;;  ;; arrows
+  ;;  (-> 1)
+  ;;  (->> 1)
+  ;;  (some-> 1)
+  ;;  (some->> 1)
+  ;;  (cond-> 1)
+  ;;  (cond->> 1)
+  ;;  (as-> 2)
+  ;;  ;; core.match pattern matching
+  ;;  (match 1)
+  ;;  ;; compojure
+  ;;  (context 2)
+  ;;  (POST 2))
   :hook ((clojure-mode . cider-mode)
          (cider-mode . eldoc-mode)
          (cider-connected . cider-enable-on-existing-clojure-buffers))
@@ -459,7 +461,7 @@
   :diminish ""
   :hook (clojure-mode . (lambda ()
                           (clj-refactor-mode 1)
-                          (cljr-add-keybindings-with-prefix "C-c RET"))))
+                          (cljr-add-keybindings-with-prefix "C-c M-r"))))
 
 ;; elixir --------------------------------------------------
 
