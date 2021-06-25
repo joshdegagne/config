@@ -6,7 +6,7 @@
 ;; assume the use of symlinks to swap configurations
 (setq user-emacs-directory (file-truename "~/.emacs.d/"))
 
-(setq gc-cons-threshold 50000000) ; 50mb
+(setq gc-cons-threshold 20000000) ; 20mb
 (setq large-file-warning-threshold 100000000) ; 100mb
 (push "/usr/local/bin" exec-path)
 
@@ -114,6 +114,7 @@
 
 ;; auto refresh buffers
 (setq global-auto-revert-mode t
+      ;; Also auto refresh dired, but be quiet about it
       global-auto-revert-non-file-buffers t
       auto-revert-verbose nil)
 
@@ -151,11 +152,11 @@
 
 ;;; DISPLAY ------------------------------------------------------------------------------
 
-(setq display-fill-column-indicator-column 90)
+(setq display-fill-column-indicator-column 100)
 (add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
 
 ;;(set-frame-font "Iosevka Nerd Font Mono 18")
-(set-frame-font "Monofur Nerd Font Mono 19")
+(set-frame-font "Monofur Nerd Font Mono 19" nil t)
 
 ;; highlight line at point
 (global-hl-line-mode 1)
@@ -199,6 +200,7 @@
 (use-package beginend :ensure t
   :config (beginend-setup-all))
 
+;; zoooming
 (global-unset-key (kbd "C-x C-+"))
 (bind-key "C-s-+" 'text-scale-increase)
 (bind-key "C-s--" 'text-scale-decrease)
@@ -220,8 +222,7 @@
   :init (setq smex-save-file (concat user-emacs-directory ".smex-items")))
 
 (defun d/ignore-dired-buffers (str)
-  "Return non-nil if STR names a Dired buffer.
-This function is intended for use with `ivy-ignore-buffers'."
+  "Return non-nil if STR names a Dired buffer. This function is intended for use with `ivy-ignore-buffers'."
   (let ((buf (get-buffer str)))
     (and buf (eq (buffer-local-value 'major-mode buf) 'dired-mode))))
 
@@ -350,7 +351,6 @@ This function is intended for use with `ivy-ignore-buffers'."
   (add-to-list 'company-backends 'company-emoji))
 
 ;; keep things balanced automatically
-;; needs help with elisp quoting
 (use-package smartparens :ensure t
   :diminish "()"
   :hook ((prog-mode . smartparens-mode)
