@@ -111,6 +111,8 @@ source "/Users/josh/Library/Application Support/tab/completion/zsh-history.zsh"
 # Android Studio
 export ANDROID_HOME="/Users/$USER/Library/Android/sdk"
 export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
+
+# jenv
 eval export PATH="/Users/josh/.jenv/shims:${PATH}"
 export JENV_SHELL=zsh
 export JENV_LOADED=1
@@ -132,24 +134,6 @@ jenv() {
     command jenv "$command" "$@";;
   esac
 }
-eval export PATH="/Users/josh/.jenv/shims:${PATH}"
-export JENV_SHELL=zsh
-export JENV_LOADED=1
-unset JAVA_HOME
-source '/usr/local/Cellar/jenv/0.5.4/libexec/libexec/../completions/jenv.zsh'
-jenv rehash 2>/dev/null
-jenv refresh-plugins
-jenv() {
-  typeset command
-  command="$1"
-  if [ "$#" -gt 0 ]; then
-    shift
-  fi
 
-  case "$command" in
-  enable-plugin|rehash|shell|shell-options)
-    eval `jenv "sh-$command" "$@"`;;
-  *)
-    command jenv "$command" "$@";;
-  esac
-}
+# graal
+ export PATH=/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.2.0/Contents/Home/bin:$PATH
