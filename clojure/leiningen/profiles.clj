@@ -22,5 +22,8 @@
                        [philoskim/debux "0.7.9"]
                        [org.clojure/tools.trace "0.7.11"]
                        [org.clojure/tools.namespace "1.1.0"]
+                       ;; benchmark
+                       [criterium "0.4.6"]
                        ;; visualization
-                       [rhizome "0.2.9"]]}}
+                       [rhizome "0.2.9"]
+                       [metrics-clojure "2.10.0"]]}}
