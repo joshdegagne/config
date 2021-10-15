@@ -45,6 +45,7 @@
 ;; whitespace
 (setq show-trailing-whitespace t)
 (add-hook 'before-save-hook 'whitespace-cleanup)
+;;(remove-hook 'before-save-hook 'whitespace-cleanup nil)
 
 ;; setup use-package
 (require 'package)
@@ -102,7 +103,8 @@
 (diminish-major-mode 'lisp-mode "λ")
 (diminish-major-mode 'emacs-lisp-mode "ξλ")
 
-(use-package eldoc :diminish "")
+(use-package eldoc :ensure t
+  :diminish "")
 
 ;; modern library functions
 (use-package dash :ensure t)
@@ -213,6 +215,14 @@
 
 ;;; SEARCH/SUGGESTION --------------------------------------------------------------------
 
+(use-package projectile :ensure t
+  :init (projectile-mode +1)
+  :bind (:map projectile-mode-map
+              ("s-p" . projectile-command-map)
+              ("C-c p" . projectile-command-map)))
+
+(use-package projectile-ripgrep :ensure t :after projectile)
+
 ;; compound key suggestion
 (use-package which-key :ensure t
   :diminish which-key-mode
@@ -252,7 +262,7 @@
          ))
 
 ;; spelling
-(use-package flyspell
+(use-package flyspell :ensure t
   :config (setq ispell-program-name "aspell"
                 ispell-extra-args '("--sug-mode=ultra"
                                     "--camel-case"
@@ -297,8 +307,7 @@
 
 (setq qwerty/home-row '(?a ?s ?d ?f ?j ?k ?l ?\;))
 (setq workman/home-row '(?a ?s ?h ?t ?n ?e ?o ?i))
-
-(setq home-row qwerty/home-row)
+(setq home-row workman/home-row) ;; set to keyboard
 
 ;; "tree" jumping
 (use-package avy :ensure t
@@ -492,7 +501,7 @@
 (use-package csv-mode :ensure t
   :mode "\\.[Cc][Ss][Vv]\\'")
 
-(use-package nix-mode
+(use-package nix-mode :ensure t
   :mode "\\.nix\\'")
 
 ;;; TEXT ---------------------------------------------------------------------------------
