@@ -63,6 +63,8 @@
 
 (eval-when-compile (require 'use-package))
 
+(use-package exec-path-from-shell :ensure t)
+
 ;; allow use-package for git-repos
 (use-package quelpa-use-package :ensure t)
 
@@ -74,6 +76,9 @@
   ;; move to trash when deleting stuff
   (setq delete-by-moving-to-trash t
         trash-directory "~/.Trash/emacs")
+
+  ;; properly set up path
+  (exec-path-from-shell-initialize)
 
   ;; Always open a file in a new frame
   (setq ns-pop-up-frames t)
