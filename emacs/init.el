@@ -290,8 +290,10 @@
 ;; git
 (use-package magit :ensure t
   :bind ("C-x m" . magit-status)
-  :config (setq magit-display-buffer-function
-                #'magit-display-buffer-fullframe-status-v1))
+  :config (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-topleft-v1
+                magit-pre-display-buffer-hook #'magit-save-window-configuration
+                magit-bury-buffer-function #'magit-restore-window-configuration))
+
 
 ;;; EDITING ------------------------------------------------------------------------------
 
