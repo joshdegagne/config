@@ -209,7 +209,7 @@
 
 ;; zoooming
 (global-unset-key (kbd "C-x C-+"))
-(bind-key "C-s-+" 'text-scale-increase)
+(bind-key "C-s-=" 'text-scale-increase)
 (bind-key "C-s--" 'text-scale-decrease)
 
 (global-unset-key (kbd "C-x C-f"))
@@ -399,8 +399,8 @@
          ; unshifted operates on the left, shifted operates on the right
          ("C-M-n" . sp-down-sexp)
          ("C-M-S-n" . sp-up-sexp)
-         ("C-M-p" . sp-backward-up-sexp)
-         ("C-M-S-p" . sp-backward-down-sexp)
+         ("C-M-p" . sp-backward-down-sexp)
+         ("C-M-S-p" . sp-backward-up-sexp)
          ;; --- manipulation --
          ("C-M-<backspace>" . sp-backward-kill-sexp)
          ("C-M-r" . sp-rewrap-sexp)
