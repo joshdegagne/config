@@ -209,8 +209,7 @@
 
 ;; zoooming
 (global-unset-key (kbd "C-x C-+"))
-(bind-key "C-s-=" 'text-scale-increase)
-(bind-key "C-s--" 'text-scale-decrease)
+;; s--, s-=, s-0
 
 (global-unset-key (kbd "C-x C-f"))
 (bind-key "C-x f" 'find-file)
