@@ -136,4 +136,4 @@ jenv() {
 }
 
 # graal
- export PATH=/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.2.0/Contents/Home/bin:$PATH
+ export PATH=/Library/Java/JavaVirtualMachines/graalvm-ce-java17-21.3.0/Contents/Home/bin:$PATH
