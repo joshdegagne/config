@@ -120,9 +120,9 @@
 ;;; BUFFERS ------------------------------------------------------------------------------
 
 ;; auto refresh buffers
-(setq global-auto-revert-mode t
-      ;; Also auto refresh dired, but be quiet about it
-      global-auto-revert-non-file-buffers t
+(global-auto-revert-mode t)
+;; Also auto refresh dired, but be quiet about it
+(setq global-auto-revert-non-file-buffers t
       auto-revert-verbose nil)
 
 ;; directory prefix for better buffer names
