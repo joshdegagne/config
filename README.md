@@ -35,9 +35,9 @@ auto-completion, structural editing, and highlighting. Mouse-less navigation is 
 - __elixir__ all the elixir tooling
 - __elixir-lsp__ integration with emacs
 
-### fonts
+### font
 
-- Iosevka!
+- brew install font-monofur-nerd-font
 
 ## installation
 
