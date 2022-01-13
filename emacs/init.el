@@ -433,7 +433,7 @@
 (use-package clojure-mode-extra-font-locking :ensure t)
 
 (use-package cider :ensure t
-  :diminish " ⅽ"
+  :diminish " "
   :init
   (setq nrepl-hide-special-buffers nil
         cider-repl-pop-to-buffer-on-connect nil
@@ -464,7 +464,7 @@
          (cider-mode . eldoc-mode)
          (cider-connected . cider-enable-on-existing-clojure-buffers))
   :config
-  (diminish-major-mode 'cider-repl-mode "cljλ»")
+  (diminish-major-mode 'cider-repl-mode "cljλ")
   (add-to-list 'same-window-buffer-names "*cider*"))
 
 (use-package eval-sexp-fu :ensure t
