@@ -421,13 +421,6 @@
 
 ;;; PROGRAMMING --------------------------------------------------------------------------
 
-(use-package coffee-mode :ensure t
-  :config (diminish-major-mode 'coffee-mode "cs")
-  :custom (coffee-tab-width 2))
-
-(use-package fish-mode :ensure t
-  :custom (fish-indent-offset 2))
-
 (use-package dockerfile-mode :ensure t)
 
 ;; clojure -------------------------------------------------
@@ -435,7 +428,7 @@
 (use-package clojure-mode :ensure t
   :init (setq buffer-save-without-query t)
   :bind ("C-c C-z" . clojure-mode-map) ; Remove the binding for inferior-lisp-mode
-  :config (diminish-major-mode 'clojure-mode "Ⅽλ"))
+  :config (diminish-major-mode 'clojure-mode "cljλ"))
 
 (use-package clojure-mode-extra-font-locking :ensure t)
 
@@ -471,7 +464,7 @@
          (cider-mode . eldoc-mode)
          (cider-connected . cider-enable-on-existing-clojure-buffers))
   :config
-  (diminish-major-mode 'cider-repl-mode "Ⅽλ»")
+  (diminish-major-mode 'cider-repl-mode "cljλ»")
   (add-to-list 'same-window-buffer-names "*cider*"))
 
 (use-package eval-sexp-fu :ensure t
