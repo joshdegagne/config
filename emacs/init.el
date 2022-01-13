@@ -239,6 +239,9 @@
   (let ((buf (get-buffer str)))
     (and buf (eq (buffer-local-value 'major-mode buf) 'dired-mode))))
 
+(use-package ivy :ensure t
+  :diminish " ")
+
 ;; ivy, counsel and swiper for completion
 (use-package counsel :ensure t
   :init (ivy-mode 1)
@@ -266,6 +269,7 @@
 
 ;; spelling
 (use-package flyspell :ensure t
+  :diminish " ﯑"
   :config (setq ispell-program-name "aspell"
                 ispell-extra-args '("--sug-mode=ultra"
                                     "--camel-case"
@@ -428,7 +432,7 @@
 (use-package clojure-mode :ensure t
   :init (setq buffer-save-without-query t)
   :bind ("C-c C-z" . clojure-mode-map) ; Remove the binding for inferior-lisp-mode
-  :config (diminish-major-mode 'clojure-mode "cljλ"))
+  :config (diminish-major-mode 'clojure-mode " cλ"))
 
 (use-package clojure-mode-extra-font-locking :ensure t)
 
@@ -464,7 +468,7 @@
          (cider-mode . eldoc-mode)
          (cider-connected . cider-enable-on-existing-clojure-buffers))
   :config
-  (diminish-major-mode 'cider-repl-mode "cljλ")
+  (diminish-major-mode 'cider-repl-mode "cλ")
   (add-to-list 'same-window-buffer-names "*cider*"))
 
 (use-package eval-sexp-fu :ensure t
