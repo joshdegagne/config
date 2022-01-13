@@ -113,7 +113,7 @@ eval $(thefuck --alias)
 
 # Android Studio
 export ANDROID_HOME="/Users/$USER/Library/Android/sdk"
-export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
+export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/32.0.0:$PATH"
 
 # jenv
 
