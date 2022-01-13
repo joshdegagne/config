@@ -2,7 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+#export ZSH="$HOME/.oh-my-zsh"
+export ZSH="/usr/local/.zsh/oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -47,7 +48,7 @@ ZSH_THEME="robbyrussell"
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -107,7 +108,7 @@ eval "$(starship init zsh)"
 eval $(thefuck --alias)
 
 # tab multiplexer configuration: https://github.com/austinjones/tab-rs/
-source "/Users/josh/Library/Application Support/tab/completion/zsh-history.zsh"
+# source "/Users/$USER/Library/Application Support/tab/completion/zsh-history.zsh"
 # end tab configuration
 
 # Android Studio
