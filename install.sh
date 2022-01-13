@@ -9,6 +9,7 @@ ln -sf `pwd`/emacs ~/.emacs.d
 ln -sf `pwd`/aspell.en.pws ~/.aspell.en.pws
 
 # alacritty configuration
+mkdir -p ~/.config/alacritty
 ln -sf `pwd`/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 
 # zsh configuration
