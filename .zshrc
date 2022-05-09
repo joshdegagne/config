@@ -2,8 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-#export ZSH="$HOME/.oh-my-zsh"
-export ZSH="/usr/local/.zsh/oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -107,19 +106,5 @@ eval "$(starship init zsh)"
 # for retrying typos
 eval $(thefuck --alias)
 
-# tab multiplexer configuration: https://github.com/austinjones/tab-rs/
-# source "/Users/$USER/Library/Application Support/tab/completion/zsh-history.zsh"
-# end tab configuration
-
-# Android Studio
-export ANDROID_HOME="/Users/$USER/Library/Android/sdk"
-export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/32.0.0:$PATH"
-
-# jenv
-
-export PATH="$HOME/.jenv/bin:$PATH"
+# jenv for managing multiple java versions:
 eval "$(jenv init -)"
-
-
-# graal
-### export PATH=/Library/Java/JavaVirtualMachines/graalvm-ce-java17-21.3.0/Contents/Home/bin:$PATH
