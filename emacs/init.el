@@ -227,6 +227,9 @@
 
 (use-package projectile-ripgrep :ensure t :after projectile)
 
+(use-package counsel-projectile :ensure t :after projectile
+  :init (counsel-projectile-mode))
+
 ;; compound key suggestion
 (use-package which-key :ensure t
   :diminish which-key-mode
