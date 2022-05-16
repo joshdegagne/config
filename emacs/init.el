@@ -202,6 +202,7 @@
 ;; delete all whitespace at once (works with smart parens)
 (use-package hungry-delete :ensure t
   :config (global-hungry-delete-mode))
+(add-hook 'minibuffer-setup-hook (lambda () (hungry-delete-mode -1)))
 
 ;; make M-< and M-> sensible for common modes
 (use-package beginend :ensure t
