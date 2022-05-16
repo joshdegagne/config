@@ -274,7 +274,9 @@
   :config (setq ispell-program-name "aspell"
                 ispell-extra-args '("--sug-mode=ultra"
                                     "--camel-case"
-                                    "--lang=en_CA"))
+                                    "--lang=en_CA")
+                ispell-list-command "--list"
+                flyspell-issue-message-flag nil)
   :hook ((prog-mode text-mode) . flyspell-mode)
   :config (bind-key "C-." nil flyspell-mode-map))
 
