@@ -7,6 +7,8 @@ emacs/.mc-lists.el
 emacs/auto-save-list
 emacs/cider-history
 emacs/recentf
+emacs/transient
+emacs/projectile-bookmarks.eld
 
 #### apple ####
 *.DS_Store
