@@ -2,10 +2,11 @@
 # https://github.com/alacritty/alacritty/blob/master/alacritty.yml
 
 window:
-  padding:     { x: 5 , y: 5 }
-  title:       Alacritty
-  decorations: full
-  class: { instance: Alacritty , general: Alacritty } # Window class (Linux/BSD only)
+  padding:       { x: 5 , y: 5 }
+  title:         Alacritty
+  dynamic_title: true
+  decorations:   full
+  class:         { instance: Alacritty , general: Alacritty } # Window class (Linux/BSD only)
 
 scrolling: { history: 10000 }
 
