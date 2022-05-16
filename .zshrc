@@ -108,3 +108,9 @@ eval $(thefuck --alias)
 
 # jenv for managing multiple java versions:
 eval "$(jenv init -)"
+
+
+# go
+export GOPATH=~/go
+export GOBIN=$GOPATH/bin
+export PATH="$GOBIN:$PATH"
