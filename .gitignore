@@ -1,14 +1,15 @@
 #### emacs ####
-emacs/elpa/
-emacs/quelpa/
-emacs/generated.custom.el
 emacs/.emacs.desktop*
 emacs/.mc-lists.el
 emacs/auto-save-list
 emacs/cider-history
+emacs/elpa
+emacs/generated.custom.el
+emacs/projectile-bookmarks.eld
+emacs/quelpa
 emacs/recentf
 emacs/transient
-emacs/projectile-bookmarks.eld
+emacs/undo-tree
 
 #### apple ####
 *.DS_Store

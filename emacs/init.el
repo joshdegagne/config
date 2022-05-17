@@ -318,7 +318,11 @@
   :config
   (diminish-major-mode 'undo-tree-visualizer-mode "⅄")
   (global-undo-tree-mode)
-  (setq undo-tree-show-minibuffer-help t))
+  (setq undo-tree-show-minibuffer-help t)
+  ;; Prevent undo tree files from polluting your git repo
+  (setq undo-tree-history-directory-alist
+        `(("." . ,(concat user-emacs-directory "undo-tree"))))
+)
 
 (setq qwerty/home-row '(?a ?s ?d ?f ?j ?k ?l ?\;))
 (setq workman/home-row '(?a ?s ?h ?t ?n ?e ?o ?i))
