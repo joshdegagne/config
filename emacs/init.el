@@ -104,7 +104,7 @@
 
 (defmacro diminish-major-mode (mode new-name)
   `(add-hook (intern (concat (symbol-name ,mode) "-hook"))
-             '(lambda () (setq mode-name ,new-name))))
+             #'(lambda () (setq mode-name ,new-name))))
 
 (diminish-major-mode 'lisp-mode "λ")
 (diminish-major-mode 'emacs-lisp-mode "ξλ")
@@ -114,7 +114,6 @@
 
 ;; modern library functions
 (use-package dash :ensure t)
-(use-package dash-functional :ensure t)
 
 (use-package free-keys :ensure t)
 
@@ -383,7 +382,8 @@
               company-minimum-prefix-length 2
               company-tooltip-flip-when-above t)
   (global-company-mode 1)
-  (add-to-list 'company-backends 'company-emoji))
+  ;;(add-to-list 'company-backends 'company-emoji)
+  )
 
 ;; keep things balanced automatically
 (use-package smartparens :ensure t
