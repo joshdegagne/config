@@ -21,7 +21,8 @@
       visible-bell t
       line-number-mode t
       column-number-mode t
-      size-indication-mode t)
+      size-indication-mode t
+      frame-resize-pixelwise t)
 
 ;; scrolling
 (setq scroll-margin 0
