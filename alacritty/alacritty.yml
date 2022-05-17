@@ -19,11 +19,9 @@ font:
 
 key_bindings:
   # control commands
-  - { key: N         , mods: Control|Shift , action: SpawnNewInstance }
-  - { key: Q         , mods: Control|Shift , action: Quit             }
-  - { key: Equals    , mods: Control|Shift , action: IncreaseFontSize }
-  - { key: Minus     , mods: Control|Shift , action: DecreaseFontSize }
-  - { key: Backslash , mods: Control|Shift , action: ResetFontSize    }
+  - { key: N         , mods: Command       , action: CreateNewWindow }
+  - { key: N         , mods: Command|Shift , action: SpawnNewInstance }
+  - { key: Backslash , mods: Command       , action: ResetFontSize    }
   # text movement
   - { key: F , mods: Alt , chars: "\x1bf" } # forward word
   - { key: B , mods: Alt , chars: "\x1bb" } # backward word
@@ -102,7 +100,7 @@ colour-schemes:
       background: '#161616'
       foreground: '#e4e4e4'
     cursor:
-      text: '#feffff'
+      text:   '#feffff'
       cursor: '#ffb472'
     normal:
       black:   '#a3a3a3'
@@ -123,7 +121,7 @@ colour-schemes:
       cyan:    '#0bbdb6'
       white:   '#feffff'
     selection:
-      text: '#5963a2'
+      text:       '#5963a2'
       background: '#f6f6f6'
 
 colors: *solarized-light
