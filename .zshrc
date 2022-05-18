@@ -107,11 +107,13 @@ export PATH="/usr/local/sbin:$PATH"
 eval "$(starship init zsh)"
 
 # for retrying typos
-eval $(thefuck --alias)
+eval "$(thefuck --alias)"
+
+# zoxide for quicker cd to common dirs
+eval "$(zoxide init zsh)"
 
 # jenv for managing multiple java versions:
 eval "$(jenv init -)"
-
 
 # go
 export GOPATH=~/go
