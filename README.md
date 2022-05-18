@@ -20,6 +20,7 @@ auto-completion, structural editing, and highlighting. Mouse-less navigation is 
 
 - __alacritty__ graphics accelerated terminal emulation
 - __thefuck__ cute way to fix mistakes
+- __zoxide__ & __fzf__ easier cd'ing when there are lots of long paths
 
 ### programming language support
 
