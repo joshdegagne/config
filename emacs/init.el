@@ -115,6 +115,10 @@
 ;; modern library functions
 (use-package dash :ensure t)
 
+(defmacro comment (&rest body)
+  "Comment out one or more s-expressions."
+  nil)
+
 (use-package free-keys :ensure t)
 
 ;;; BUFFERS ------------------------------------------------------------------------------
@@ -162,7 +166,7 @@
 (setq display-fill-column-indicator-column 100)
 (add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
 
-;;(set-frame-font "Iosevka Nerd Font Mono 18")
+(comment (set-frame-font "Iosevka Nerd Font Mono 18"))
 (set-frame-font "Monofur Nerd Font Mono 19" nil t)
 
 ;; highlight line at point
@@ -267,9 +271,9 @@
          ("M-y" . counsel-yank-pop)
          :map ivy-minibuffer-map
          ("<return>" . ivy-alt-done)
-         ;; ("C-f" . )
-         ;; ("C-b" . )
-         ))
+         ;; want to be able to easily switch between files and buffers
+         (comment ("C-f" . nil)
+                  ("C-b" . nil))))
 
 ;; spelling
 (use-package flyspell :ensure t
@@ -375,9 +379,9 @@
   :hook (prog-mode . subword-mode))
 
 ;; completion box
-;;(use-package company-emoji :ensure t)
-;;(use-package company-quickhelp :ensure t
-;;  :config (company-quickhelp-mode 1))
+(comment (use-package company-emoji :ensure t)
+         (use-package company-quickhelp :ensure t
+           :config (company-quickhelp-mode 1)))
 (use-package company :ensure t
   :diminish " α"
   :config
@@ -386,8 +390,7 @@
               company-minimum-prefix-length 2
               company-tooltip-flip-when-above t)
   (global-company-mode 1)
-  ;;(add-to-list 'company-backends 'company-emoji)
-  )
+  (comment (add-to-list 'company-backends 'company-emoji)))
 
 ;; keep things balanced automatically
 (use-package smartparens :ensure t
@@ -397,8 +400,8 @@
          (cider-repl-mode . smartparens-mode)
          (cider-repl-mode . smartparens-strict-mode))
   :config
-  (require 'smartparens-config) ;; default config for different languages.
-  (show-smartparens-global-mode t) ;; highlights the paren that matches paren at point
+  (require 'smartparens-config) ; default config for different languages.
+  (show-smartparens-global-mode t) ; highlights the paren that matches paren at point
   (bind-key "C-<left>" nil smartparens-mode-map)
   (bind-key "C-<right>" nil smartparens-mode-map)
   (bind-key "C-M-u" nil smartparens-mode-map)
@@ -461,20 +464,20 @@
         cider-repl-history-file (concat user-emacs-directory "cider-history")
         cider-repl-use-clojure-font-lock t
         cider-switch-to-repl-command 'cider-switch-to-relevant-repl-buffer)
-  ;;(define-clojure-indent
-  ;;  ;; arrows
-  ;;  (-> 1)
-  ;;  (->> 1)
-  ;;  (some-> 1)
-  ;;  (some->> 1)
-  ;;  (cond-> 1)
-  ;;  (cond->> 1)
-  ;;  (as-> 2)
-  ;;  ;; core.match pattern matching
-  ;;  (match 1)
-  ;;  ;; compojure
-  ;;  (context 2)
-  ;;  (POST 2))
+  (comment (define-clojure-indent
+             ;; arrows
+             (-> 1)
+             (->> 1)
+             (some-> 1)
+             (some->> 1)
+             (cond-> 1)
+             (cond->> 1)
+             (as-> 2)
+             ;; core.match pattern matching
+             (match 1)
+             ;; compojure
+             (context 2)
+             (POST 2)))
   :hook ((clojure-mode . cider-mode)
          (cider-mode . eldoc-mode)
          (cider-connected . cider-enable-on-existing-clojure-buffers))
@@ -489,9 +492,8 @@
 
 (use-package clj-refactor :ensure t
   :diminish ""
-  :hook (clojure-mode . (lambda ()
-                          (clj-refactor-mode 1)
-                          (cljr-add-keybindings-with-prefix "C-c M-r"))))
+  :hook ((clojure-mode . (lambda ()
+                           (clj-refactor-mode 1)))))
 
 (use-package cljsbuild-mode :ensure t)
 
