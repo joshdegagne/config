@@ -100,22 +100,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# homebrew
-export PATH="/usr/local/sbin:$PATH"
-
 # use starship for prompt
 eval "$(starship init zsh)"
 
 # for retrying typos
-eval "$(thefuck --alias)"
+eval "$(thefuck --alias fck)"
 
 # zoxide for quicker cd to common dirs
 eval "$(zoxide init zsh)"
 
 # jenv for managing multiple java versions:
 eval "$(jenv init -)"
-
-# go
-export GOPATH=~/go
-export GOBIN=$GOPATH/bin
-export PATH="$GOBIN:$PATH"

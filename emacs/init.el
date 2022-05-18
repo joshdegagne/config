@@ -270,10 +270,12 @@
          ("C-r" . ivy-resume)
          ("M-y" . counsel-yank-pop)
          :map ivy-minibuffer-map
-         ("<return>" . ivy-alt-done)
-         ;; want to be able to easily switch between files and buffers
-         (comment ("C-f" . nil)
-                  ("C-b" . nil))))
+         ("<return>" . ivy-alt-done)))
+
+(comment (:bind (:map ivy-minibuffer-map
+                       ;; want to be able to easily switch between files and buffers
+                       ("C-f" . nil)
+                       ("C-b" . nil))))
 
 ;; spelling
 (use-package flyspell :ensure t
