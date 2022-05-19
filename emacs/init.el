@@ -52,10 +52,9 @@
 (require 'package)
 (setq package-enable-at-startup nil
       package-user-dir (concat user-emacs-directory "elpa/"))
-(add-to-list 'package-archives    '("melpa-stable" . "http://stable.melpa.org/packages/") t)
-(add-to-list 'package-archives    '("melpa"        . "http://melpa.org/packages/") t)
-(setq package-archive-priorities '(("melpa-stable" . 20)
-                                   ("melpa"        . 10)))
+(add-to-list 'package-archives '("melpa"        . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+(setq package-archive-priorities '(("melpa" . 20) ("melpa-stable" . 10)))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
