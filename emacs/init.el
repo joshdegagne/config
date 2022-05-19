@@ -72,7 +72,10 @@
 ;; allow use-package for git-repos
 (use-package quelpa-use-package :ensure t)
 
-(use-package diminish :ensure t)
+(use-package delight :ensure t)
+(use-package delight-powerline
+  :quelpa (:fetcher wiki :repo "https://www.emacswiki.org/emacs/delight-powerline.el")
+  :after (delight powerline))
 
 ;;; MAC ----------------------------------------------------------------------------------
 
@@ -101,24 +104,14 @@
 
 ;;; ELISP --------------------------------------------------------------------------------
 
-(defmacro diminish-major-mode (mode new-name)
-  `(add-hook (intern (concat (symbol-name ,mode) "-hook"))
-             #'(lambda () (setq mode-name ,new-name))))
-
-(diminish-major-mode 'lisp-mode "λ")
-(diminish-major-mode 'emacs-lisp-mode "ξλ")
-
-(use-package eldoc :ensure t
-  :diminish "")
-
-;; modern library functions
 (use-package dash :ensure t)
 
 (defmacro comment (&rest body)
   "Comment out one or more s-expressions."
   nil)
 
-(use-package free-keys :ensure t)
+(defun replace-in-string (what with in)
+  (replace-regexp-in-string (regexp-quote what) with in nil 'literal))
 
 ;;; BUFFERS ------------------------------------------------------------------------------
 
@@ -129,15 +122,14 @@
       auto-revert-verbose nil)
 
 ;; directory prefix for better buffer names
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
+(use-package uniquify
+  :config (setq uniquify-buffer-name-style 'forward))
 
 (use-package ibuffer :ensure t
-  :config (diminish-major-mode 'ibuffer "≣")
+  :config (delight '((ibuffer "" :major)))
   :bind (("C-x C-b" . ibuffer)))
 
-(use-package ibuffer-vc :ensure t
-  :after ibuffer
+(use-package ibuffer-vc :ensure t :after ibuffer
   :hook (ibuffer . ibuffer-vc-set-filter-groups-by-vc-root))
 
 ;; Easy workspaces creation and switching
@@ -173,11 +165,12 @@
 
 ;; see hex colours
 (use-package rainbow-mode :ensure t
+  :delight
   :hook (prog-mode text-mode))
 
 ;; visually identify matching parens
 (use-package rainbow-delimiters :ensure t
-  :diminish rainbow-delimiters
+  :delight
   :hook ((prog-mode text-mode) . rainbow-delimiters-mode))
 
 (use-package powerline :ensure t
@@ -202,13 +195,21 @@
 ;;; KEYS ---------------------------------------------------------------------------------
 ;; `bind-key` is only available after use-package
 
+;; check what's available
+(use-package free-keys :ensure t)
+
 ;; delete all whitespace at once (works with smart parens)
 (use-package hungry-delete :ensure t
+  :delight
   :config (global-hungry-delete-mode))
 (add-hook 'minibuffer-setup-hook (lambda () (hungry-delete-mode -1)))
 
 ;; make M-< and M-> sensible for common modes
 (use-package beginend :ensure t
+  :delight
+  (beginend-global-mode)
+  (beginend-dired-mode)
+  (beginend-prog-mode)
   :config (beginend-setup-all))
 
 ;; zoooming
@@ -224,6 +225,7 @@
 ;;; SEARCH/SUGGESTION --------------------------------------------------------------------
 
 (use-package projectile :ensure t
+  :delight '(:eval (format " [%s]" (projectile-project-name)))
   :init (projectile-mode +1)
   :bind (:map projectile-mode-map
               ("C-x p" . projectile-command-map)))
@@ -235,7 +237,7 @@
 
 ;; compound key suggestion
 (use-package which-key :ensure t
-  :diminish which-key-mode
+  :delight
   :config (which-key-mode +1))
 
 (use-package smex :ensure t
@@ -247,7 +249,7 @@
     (and buf (eq (buffer-local-value 'major-mode buf) 'dired-mode))))
 
 (use-package ivy :ensure t
-  :diminish " ")
+  :delight " ")
 
 ;; ivy, counsel and swiper for completion
 (use-package counsel :ensure t
@@ -278,7 +280,7 @@
 
 ;; spelling
 (use-package flyspell :ensure t
-  :diminish " ﯑"
+  :delight " ﯑"
   :config (setq ispell-program-name "aspell"
                 ispell-extra-args '("--sug-mode=ultra"
                                     "--camel-case"
@@ -291,8 +293,6 @@
 (use-package flyspell-correct :ensure t :after flyspell
   :after flyspell
   :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
-
-;; (this mode has versions for avy, helm, popup, etc...)
 (use-package flyspell-correct-ivy :ensure t :after flyspell-correct)
 
 ;;; FILES --------------------------------------------------------------------------------
@@ -301,7 +301,6 @@
 (use-package arc-mode :ensure t
   :init (add-hook 'archive-extract-hook (lambda () (toggle-read-only 1))))
 
-;; git
 (use-package magit :ensure t
   :bind ("C-x m" . magit-status)
   :config (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-topleft-v1
@@ -319,15 +318,14 @@
 (delete-selection-mode)
 
 (use-package undo-tree :ensure t
-  :diminish ""
+  :delight
   :config
-  (diminish-major-mode 'undo-tree-visualizer-mode "⅄")
+  (delight 'undo-tree-visualizer-mode "" :major)
   (global-undo-tree-mode)
   (setq undo-tree-show-minibuffer-help t)
   ;; Prevent undo tree files from polluting your git repo
   (setq undo-tree-history-directory-alist
-        `(("." . ,(concat user-emacs-directory "undo-tree"))))
-)
+        `(("." . ,(concat user-emacs-directory "undo-tree")))))
 
 (setq qwerty/home-row '(?a ?s ?d ?f ?j ?k ?l ?\;))
 (setq workman/home-row '(?a ?s ?h ?t ?n ?e ?o ?i))
@@ -362,6 +360,7 @@
   :config (setq smartscan-symbol-selector "symbol"))
 
 (use-package highlight-symbol :ensure t
+  :delight
   :hook (prog-mode . highlight-symbol-mode))
 
 (use-package multiple-cursors :ensure t
@@ -376,7 +375,7 @@
 
 ;; navigation within camelCase words
 (use-package subword :ensure t
-  :diminish ""
+  :delight
   :hook (prog-mode . subword-mode))
 
 ;; completion box
@@ -384,18 +383,18 @@
          (use-package company-quickhelp :ensure t
            :config (company-quickhelp-mode 1)))
 (use-package company :ensure t
-  :diminish " α"
+  :delight " "
   :config
   (setq company-idle-delay 0.2
-              company-tooltip-limit 10
-              company-minimum-prefix-length 2
-              company-tooltip-flip-when-above t)
+        company-tooltip-limit 10
+        company-minimum-prefix-length 2
+        company-tooltip-flip-when-above t)
   (global-company-mode 1)
   (comment (add-to-list 'company-backends 'company-emoji)))
 
 ;; keep things balanced automatically
 (use-package smartparens :ensure t
-  :diminish "()"
+  :delight " "
   :hook ((prog-mode . smartparens-mode)
          (prog-mode . smartparens-strict-mode)
          (cider-repl-mode . smartparens-mode)
@@ -438,7 +437,13 @@
 (use-package expand-region :ensure t
   :bind ("C-=" . er/expand-region))
 
+(use-package eldoc :ensure t
+  :delight)
+
 ;;; PROGRAMMING --------------------------------------------------------------------------
+
+(delight '((lisp-mode "λ" :major)
+           (emacs-lisp-mode "ξλ" :major)))
 
 (use-package dockerfile-mode :ensure t)
 
@@ -446,13 +451,19 @@
 
 (use-package clojure-mode :ensure t
   :init (setq buffer-save-without-query t)
-  :bind ("C-c C-z" . clojure-mode-map) ; Remove the binding for inferior-lisp-mode
-  :config (diminish-major-mode 'clojure-mode " cλ"))
+  ; Remove the binding for inferior-lisp-mode
+  :bind ("C-c C-z" . clojure-mode-map)
+  :config (delight '((clojure-mode " cljλ" :major)
+                     (clojurescript-mode " cljsλ" :major)
+                     (clojurec-mode "cljcλ" :major))))
 
 (use-package clojure-mode-extra-font-locking :ensure t)
 
+
+
+
 (use-package cider :ensure t
-  :diminish " "
+  :delight '(:eval (format " [%s]" (replace-in-string " " "-" (cider--modeline-info))))
   :init
   (setq nrepl-hide-special-buffers nil
         cider-repl-pop-to-buffer-on-connect nil
@@ -483,7 +494,7 @@
          (cider-mode . eldoc-mode)
          (cider-connected . cider-enable-on-existing-clojure-buffers))
   :config
-  (diminish-major-mode 'cider-repl-mode "cλ")
+  (delight 'cider-repl-mode "" :major)
   (add-to-list 'same-window-buffer-names "*cider*"))
 
 (use-package eval-sexp-fu :ensure t
@@ -491,17 +502,17 @@
                               ((t (:foreground "green4" :weight bold))))))
 (use-package cider-eval-sexp-fu :ensure t)
 
-(use-package clj-refactor :ensure t
-  :diminish ""
-  :hook ((clojure-mode . (lambda ()
-                           (clj-refactor-mode 1)))))
+(comment (use-package clj-refactor :ensure t
+           :delight
+           :hook ((clojure-mode . (lambda ()
+                                    (clj-refactor-mode 1))))))
 
 (use-package cljsbuild-mode :ensure t)
 
 ;; elixir --------------------------------------------------
 
 (use-package elixir-mode :ensure t
-  :config (diminish-major-mode 'elixir-mode "exλ"))
+  :config (delight 'elixir-mode "exλ" :major))
 
 ;;; DATA ---------------------------------------------------------------------------------
 
@@ -527,7 +538,8 @@
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "pandoc"))
+  :init (setq markdown-command "pandoc")
+  :config (delight 'markdown-mode "md" :major))
 
 ;;; SERVER (LAST) ------------------------------------------------------------------------
 
