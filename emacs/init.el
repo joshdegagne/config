@@ -157,7 +157,6 @@
 (setq display-fill-column-indicator-column 100)
 (add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
 
-(comment (set-frame-font "Iosevka Nerd Font Mono 18"))
 (set-frame-font "Monofur Nerd Font Mono 19" nil t)
 
 ;; highlight line at point
