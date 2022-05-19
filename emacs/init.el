@@ -94,10 +94,6 @@
   (require 'ls-lisp)
   (setq ls-lisp-use-insert-directory-program nil)
 
-  ;; powerline colour rendering bug when running on osx.
-  ;; (setq powerline-image-apple-rgb t)
-  (setq ns-use-srgb-colorspace nil)
-
   ;; Useful for https://github.com/dunn/company-emoji
   ;; https://www.reddit.com/r/emacs/comments/8ph0hq/i_have_converted_from_the_mac_port_to_the_ns_port/
   ;; not tested with emacs26 (requires a patched Emacs version for multi-color font support)
