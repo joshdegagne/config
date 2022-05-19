@@ -106,6 +106,16 @@
 
 (use-package dash :ensure t)
 
+(defmacro ivy-quit-and-run (&rest body)
+  "Quit the minibuffer and run BODY afterwards."
+  `(progn
+     (put 'quit 'error-message "")
+     (run-at-time nil nil
+                  (lambda ()
+                    (put 'quit 'error-message "Quit")
+                    ,@body))
+     (minibuffer-keyboard-quit)))
+
 (defmacro comment (&rest body)
   "Comment out one or more s-expressions."
   nil)
@@ -270,12 +280,9 @@
          ("C-r" . ivy-resume)
          ("M-y" . counsel-yank-pop)
          :map ivy-minibuffer-map
-         ("<return>" . ivy-alt-done)))
-
-(comment (:bind (:map ivy-minibuffer-map
-                       ;; want to be able to easily switch between files and buffers
-                       ("C-f" . nil)
-                       ("C-b" . nil))))
+         ("<return>" . ivy-alt-done)
+         ("C-f" . (lambda () (interactive) (ivy-quit-and-run (counsel-find-file))))
+         ("C-b" . (lambda () (interactive) (ivy-quit-and-run (ivy-switch-buffer))))))
 
 ;; spelling
 (use-package flyspell :ensure t
