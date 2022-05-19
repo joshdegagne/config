@@ -176,7 +176,7 @@
   :config
   ;; Included separators: alternate, arrow, arrow-fade, bar, box, brace, butt,
   ;; chamfer, contour, curve, rounded, roundstub, slant, wave, zigzag, and nil.
-  (setq powerline-default-separator 'slant)
+  (setq powerline-default-separator 'wave)
   ;; Included themes: default, center, center-evil, vim, and nano.
   (powerline-default-theme))
 
