@@ -63,6 +63,10 @@
 
 (eval-when-compile (require 'use-package))
 
+(add-to-list 'imenu-generic-expression
+             '("Used Packages"
+               "\\(^\\s-*(use-package +\\)\\(\\_<.+\\_>\\)" 2))
+
 (use-package exec-path-from-shell :ensure t)
 
 ;; allow use-package for git-repos
