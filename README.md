@@ -27,6 +27,14 @@ auto-completion, structural editing, and highlighting. Mouse-less navigation is 
 #### clojure
 
 - __java__ jvm runtime
+  ```zsh
+  brew install openjdk
+  ```
+    - __jenv__ for managing versions
+      ```zsh
+      brew install jenv
+      jenv add /usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home
+      ```
 - __leiningen__ cider, project configuration, package management
 
 #### erlang/elixir
@@ -35,6 +43,10 @@ auto-completion, structural editing, and highlighting. Mouse-less navigation is 
 - __rebar3__ erlang project configuration, package management
 - __elixir__ all the elixir tooling
 - __elixir-lsp__ integration with emacs
+
+#### golang
+
+stuff!?!?!
 
 ### font
 
