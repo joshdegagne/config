@@ -124,4 +124,4 @@ colour-schemes:
       text:       '#5963a2'
       background: '#f6f6f6'
 
-colors: *solarized-light
+colors: *solarized-dark

@@ -12,6 +12,9 @@ ln -sf `pwd`/aspell.en.pws ~/.aspell.en.pws
 mkdir -p ~/.config/alacritty
 ln -sf `pwd`/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 
+# zellij configuration
+ln -sf `pwd`/zellij ~/.config/zellij
+
 # zsh configuration
 ln -sf `pwd`/.zshrc ~/.zshrc
 
