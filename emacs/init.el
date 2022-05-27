@@ -465,9 +465,6 @@
 
 (use-package clojure-mode-extra-font-locking :ensure t)
 
-
-
-
 (use-package cider :ensure t
   :delight '(:eval (format " [%s]" (replace-in-string " " "-" (cider--modeline-info))))
   :init
@@ -482,20 +479,17 @@
         cider-repl-history-file (concat user-emacs-directory "cider-history")
         cider-repl-use-clojure-font-lock t
         cider-switch-to-repl-command 'cider-switch-to-relevant-repl-buffer)
-  (comment (define-clojure-indent
-             ;; arrows
-             (-> 1)
-             (->> 1)
-             (some-> 1)
-             (some->> 1)
-             (cond-> 1)
-             (cond->> 1)
-             (as-> 2)
-             ;; core.match pattern matching
-             (match 1)
-             ;; compojure
-             (context 2)
-             (POST 2)))
+  (define-clojure-indent
+    ;; threading
+    (-> 1)
+    (->> 1)
+    (some-> 1)
+    (some->> 1)
+    (cond-> 1)
+    (cond->> 1)
+    (as-> 2)
+    ;; core.match pattern matching
+    (match 1))
   :hook ((clojure-mode . cider-mode)
          (cider-mode . eldoc-mode)
          (cider-connected . cider-enable-on-existing-clojure-buffers))
