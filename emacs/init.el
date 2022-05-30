@@ -465,7 +465,7 @@
 
 (use-package clojure-mode-extra-font-locking :ensure t)
 
-(use-package cider :ensure t
+(use-package cider :ensure t :pin melpa-stable
   :delight '(:eval (format " [%s]" (replace-in-string " " "-" (cider--modeline-info))))
   :init
   (setq nrepl-hide-special-buffers nil
