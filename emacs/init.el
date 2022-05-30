@@ -481,13 +481,13 @@
         cider-switch-to-repl-command 'cider-switch-to-relevant-repl-buffer)
   (define-clojure-indent
     ;; threading
-    (-> 1)
-    (->> 1)
-    (some-> 1)
-    (some->> 1)
-    (cond-> 1)
-    (cond->> 1)
-    (as-> 2)
+    (comment (-> 1)
+             (->> 1)
+             (some-> 1)
+             (some->> 1)
+             (cond-> 1)
+             (cond->> 1)
+             (as-> 2))
     ;; core.match pattern matching
     (match 1))
   :hook ((clojure-mode . cider-mode)
