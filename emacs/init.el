@@ -14,15 +14,16 @@
 (when (window-system)
   (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode horizontal-scroll-bar-mode))
     (when (fboundp mode) (funcall mode -1))))
+
 (set-fringe-mode '(1 . 1))
 (setq inhibit-startup-message t
       inhibit-startup-screen t
       use-dialog-box nil
       visible-bell t
-      line-number-mode t
       column-number-mode t
       size-indication-mode t
       frame-resize-pixelwise t)
+(global-display-line-numbers-mode 1)
 
 ;; scrolling
 (setq scroll-margin 0
