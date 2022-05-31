@@ -292,7 +292,9 @@
   :bind ("C-x m" . magit-status)
   :config (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-topleft-v1
                 magit-pre-display-buffer-hook #'magit-save-window-configuration
-                magit-bury-buffer-function #'magit-restore-window-configuration))
+                magit-bury-buffer-function #'magit-restore-window-configuration
+                ;; maybe not the best spot, but I almost exclusively use ediff for git diffs
+                ediff-window-setup-function #'ediff-setup-windows-plain))
 
 
 ;;; EDITING ------------------------------------------------------------------------------
