@@ -47,21 +47,21 @@
 ;; whitespace
 (setq show-trailing-whitespace t)
 (add-hook 'before-save-hook 'whitespace-cleanup)
-;;(remove-hook 'before-save-hook 'whitespace-cleanup nil)
 
 ;; setup use-package
 (require 'package)
 (setq package-enable-at-startup nil
-      package-user-dir (concat user-emacs-directory "elpa/"))
-(add-to-list 'package-archives '("melpa"        . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
-(setq package-archive-priorities '(("melpa" . 20) ("melpa-stable" . 10)))
+      package-user-dir (concat user-emacs-directory "elpa/")
+      package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("melpa-stable" . "https://stable.melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/"))
+      package-archive-priorities '(("melpa" . 20)
+                                   ("melpa-stable" . 10)))
 (package-initialize)
-
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-
 (eval-when-compile (require 'use-package))
 
 (add-to-list 'imenu-generic-expression
