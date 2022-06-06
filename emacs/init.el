@@ -466,14 +466,8 @@
         cider-repl-use-clojure-font-lock t
         cider-switch-to-repl-command 'cider-switch-to-relevant-repl-buffer)
   (define-clojure-indent
-    ;; threading
-    (comment (-> 1)
-             (->> 1)
-             (some-> 1)
-             (some->> 1)
-             (cond-> 1)
-             (cond->> 1)
-             (as-> 2))
+    ;;
+    (assoc '(0 (:form)))
     ;; core.match pattern matching
     (match 1))
   :hook ((clojure-mode . cider-mode)
