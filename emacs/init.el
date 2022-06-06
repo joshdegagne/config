@@ -6,7 +6,7 @@
 ;; assume the use of symlinks to swap configurations
 (setq user-emacs-directory (file-truename "~/.emacs.d/"))
 
-(setq gc-cons-threshold 20000000) ; 20mb
+(setq gc-cons-threshold (* 50 1024 1024)) ; 50mb
 (setq large-file-warning-threshold 100000000) ; 100mb
 (push "/usr/local/bin" exec-path)
 
