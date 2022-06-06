@@ -63,17 +63,18 @@
   (package-refresh-contents)
   (package-install 'use-package))
 (eval-when-compile (require 'use-package))
+(setq use-package-always-ensure t)
 
 (add-to-list 'imenu-generic-expression
              '("Used Packages"
                "\\(^\\s-*(use-package +\\)\\(\\_<.+\\_>\\)" 2))
 
-(use-package exec-path-from-shell :ensure t)
+(use-package exec-path-from-shell)
 
 ;; allow use-package for git-repos
-(use-package quelpa-use-package :ensure t)
+(use-package quelpa-use-package)
 
-(use-package delight :ensure t)
+(use-package delight)
 (use-package delight-powerline
   :quelpa (:fetcher wiki :repo "https://www.emacswiki.org/emacs/delight-powerline.el")
   :after (delight powerline))
@@ -92,7 +93,7 @@
   (setq ns-pop-up-frames t)
 
   ;; use finder
-  (use-package reveal-in-osx-finder :ensure t)
+  (use-package reveal-in-osx-finder)
 
   ;; The osx ls does not support -X or --sort
   (require 'ls-lisp)
@@ -102,7 +103,7 @@
 
 ;;; ELISP --------------------------------------------------------------------------------
 
-(use-package dash :ensure t)
+(use-package dash)
 
 (defmacro ivy-quit-and-run (&rest body)
   "Quit the minibuffer and run BODY afterwards."
@@ -133,11 +134,12 @@
 (use-package uniquify
   :config (setq uniquify-buffer-name-style 'forward))
 
-(use-package ibuffer :ensure t
+(use-package ibuffer
   :config (delight '((ibuffer "" :major)))
   :bind (("C-x C-b" . ibuffer)))
 
-(use-package ibuffer-vc :ensure t :after ibuffer
+(use-package ibuffer-vc
+  :after ibuffer
   :hook (ibuffer . ibuffer-vc-set-filter-groups-by-vc-root))
 
 ;;; DISPLAY ------------------------------------------------------------------------------
@@ -151,16 +153,16 @@
 (global-hl-line-mode 1)
 
 ;; see hex colours
-(use-package rainbow-mode :ensure t
+(use-package rainbow-mode
   :delight
   :hook (prog-mode text-mode))
 
 ;; visually identify matching parens
-(use-package rainbow-delimiters :ensure t
+(use-package rainbow-delimiters
   :delight
   :hook ((prog-mode text-mode) . rainbow-delimiters-mode))
 
-(use-package powerline :ensure t
+(use-package powerline
   :config
   ;; Included separators: alternate, arrow, arrow-fade, bar, box, brace, butt,
   ;; chamfer, contour, curve, rounded, roundstub, slant, wave, zigzag, and nil.
@@ -169,7 +171,7 @@
   (powerline-default-theme))
 
 ;; theme
-(use-package solarized-theme :ensure t
+(use-package solarized-theme
   :config
   (setq color-theme-is-global t
         solarized-high-contrast-mode-line t
@@ -183,16 +185,16 @@
 ;; `bind-key` is only available after use-package
 
 ;; check what's available
-(use-package free-keys :ensure t)
+(use-package free-keys)
 
 ;; delete all whitespace at once (works with smart parens)
-(use-package hungry-delete :ensure t
+(use-package hungry-delete
   :delight
   :config (global-hungry-delete-mode))
 (add-hook 'minibuffer-setup-hook (lambda () (hungry-delete-mode -1)))
 
 ;; make M-< and M-> sensible for common modes
-(use-package beginend :ensure t
+(use-package beginend
   :delight
   (beginend-global-mode)
   (beginend-dired-mode)
@@ -211,23 +213,23 @@
 
 ;;; SEARCH/SUGGESTION --------------------------------------------------------------------
 
-(use-package projectile :ensure t
+(use-package projectile
   :delight '(:eval (format " [%s]" (projectile-project-name)))
   :init (projectile-mode +1)
   :bind (:map projectile-mode-map
               ("C-x p" . projectile-command-map)))
 
-(use-package projectile-ripgrep :ensure t :after projectile)
+(use-package projectile-ripgrep :after projectile)
 
-(use-package counsel-projectile :ensure t :after projectile
+(use-package counsel-projectile :after projectile
   :init (counsel-projectile-mode))
 
 ;; compound key suggestion
-(use-package which-key :ensure t
+(use-package which-key
   :delight
   :config (which-key-mode +1))
 
-(use-package smex :ensure t
+(use-package smex
   :init (setq smex-save-file (concat user-emacs-directory ".smex-items")))
 
 (defun d/ignore-dired-buffers (str)
@@ -235,11 +237,10 @@
   (let ((buf (get-buffer str)))
     (and buf (eq (buffer-local-value 'major-mode buf) 'dired-mode))))
 
-(use-package ivy :ensure t
-  :delight " ")
+(use-package ivy :delight " ")
 
 ;; ivy, counsel and swiper for completion
-(use-package counsel :ensure t
+(use-package counsel
   :init (ivy-mode 1)
   :config
   (setq ivy-use-virtual-buffers t
@@ -263,7 +264,7 @@
          ("C-b" . (lambda () (interactive) (ivy-quit-and-run (ivy-switch-buffer))))))
 
 ;; spelling
-(use-package flyspell :ensure t
+(use-package flyspell
   :delight " ﯑"
   :config (setq ispell-program-name "aspell"
                 ispell-extra-args '("--sug-mode=ultra"
@@ -273,19 +274,19 @@
                 flyspell-issue-message-flag nil)
   :hook ((prog-mode text-mode) . flyspell-mode)
   :config (bind-key "C-." nil flyspell-mode-map))
-
-(use-package flyspell-correct :ensure t :after flyspell
+(use-package flyspell-correct
   :after flyspell
   :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
-(use-package flyspell-correct-ivy :ensure t :after flyspell-correct)
+(use-package flyspell-correct-ivy
+  :after flyspell-correct)
 
 ;;; FILES --------------------------------------------------------------------------------
 
 ;; view archives (ensure read-only to avoid editing jar files)
-(use-package arc-mode :ensure t
+(use-package arc-mode
   :init (add-hook 'archive-extract-hook (lambda () (toggle-read-only 1))))
 
-(use-package magit :ensure t
+(use-package magit
   :bind ("C-x m" . magit-status)
   :config (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-topleft-v1
                 magit-pre-display-buffer-hook #'magit-save-window-configuration
@@ -303,7 +304,7 @@
       mouse-yank-at-point t)
 (delete-selection-mode)
 
-(use-package undo-tree :ensure t
+(use-package undo-tree
   :delight
   :config
   (delight 'undo-tree-visualizer-mode "" :major)
@@ -318,13 +319,13 @@
 (setq home-row workman/home-row) ;; set to keyboard
 
 ;; "tree" jumping
-(use-package avy :ensure t
+(use-package avy
   :config
   (setq avy-timeout-seconds 0.3)
   (setq avy-keys home-row)
   :bind (("C-o" . avy-goto-char-timer)))
 
-(use-package ace-window :ensure t
+(use-package ace-window
   :config
   (setq aw-keys home-row)
   (setq aw-dispatch-alist ;; avoid home row keys (for both layouts)
@@ -341,34 +342,31 @@
   :bind (("M-o" . ace-window)))
 
 ;; jump to symbol @ point
-(use-package smartscan :ensure t
+(use-package smartscan
   :hook (prog-mode . smartscan-mode)
   :config (setq smartscan-symbol-selector "symbol"))
 
-(use-package highlight-symbol :ensure t
+(use-package highlight-symbol
   :delight
   :hook (prog-mode . highlight-symbol-mode))
 
-(use-package multiple-cursors :ensure t
+(use-package multiple-cursors
   :bind (("C->" . mc/mark-next-like-this)
          ("C-<" . mc/mark-previous-like-this)
          ("C-c C->" . mc/mark-all-like-this)
          ("C-S-c C-S-c" . mc/edit-lines)))
 
 ;; C-a to beginning of indented stuff
-(use-package crux :ensure t
+(use-package crux
   :bind (("C-a" . crux-move-beginning-of-line)))
 
 ;; navigation within camelCase words
-(use-package subword :ensure t
+(use-package subword
   :delight
   :hook (prog-mode . subword-mode))
 
 ;; completion box
-(comment (use-package company-emoji :ensure t)
-         (use-package company-quickhelp :ensure t
-           :config (company-quickhelp-mode 1)))
-(use-package company :ensure t
+(use-package company
   :delight " "
   :config
   (setq company-idle-delay 0.2
@@ -377,9 +375,12 @@
         company-tooltip-flip-when-above t)
   (global-company-mode 1)
   (comment (add-to-list 'company-backends 'company-emoji)))
+(use-package company-quickhelp
+  :after company
+  :config (company-quickhelp-mode 1))
 
 ;; keep things balanced automatically
-(use-package smartparens :ensure t
+(use-package smartparens
   :delight " "
   :hook ((prog-mode . smartparens-mode)
          (prog-mode . smartparens-strict-mode)
@@ -420,32 +421,37 @@
          ("C-M-}" . sp-select-next-thing)
          ("C-M-{" . sp-select-previous-thing-exchange)))
 
-(use-package expand-region :ensure t
+(use-package expand-region
   :bind ("C-=" . er/expand-region))
 
-(use-package eldoc :ensure t
+(use-package eldoc
   :delight)
 
 ;;; PROGRAMMING --------------------------------------------------------------------------
 
+;; lisp ----------------------------------------------------
+
 (delight '((lisp-mode "λ" :major)
            (emacs-lisp-mode "ξλ" :major)))
 
-(use-package dockerfile-mode :ensure t)
+(use-package eval-sexp-fu
+  :config (custom-set-faces '(eval-sexp-fu-flash
+                              ((t (:foreground "green4" :weight bold))))))
 
 ;; clojure -------------------------------------------------
 
-(use-package clojure-mode :ensure t
+(use-package clojure-mode
   :init (setq buffer-save-without-query t)
-  ; Remove the binding for inferior-lisp-mode
+  ;; Remove the binding for inferior-lisp-mode
   :bind ("C-c C-z" . clojure-mode-map)
   :config (delight '((clojure-mode " cljλ" :major)
                      (clojurescript-mode " cljsλ" :major)
                      (clojurec-mode "cljcλ" :major))))
 
-(use-package clojure-mode-extra-font-locking :ensure t)
+(use-package clojure-mode-extra-font-locking)
 
-(use-package cider :ensure t :pin melpa-stable
+(use-package cider
+  :pin melpa-stable
   :delight '(:eval (format " [%s]" (replace-in-string " " "-" (cider--modeline-info))))
   :init
   (setq nrepl-hide-special-buffers nil
@@ -477,43 +483,42 @@
   (delight 'cider-repl-mode "" :major)
   (add-to-list 'same-window-buffer-names "*cider*"))
 
-(use-package eval-sexp-fu :ensure t
-  :config (custom-set-faces '(eval-sexp-fu-flash
-                              ((t (:foreground "green4" :weight bold))))))
-(use-package cider-eval-sexp-fu :ensure t)
+(use-package cider-eval-sexp-fu
+  :after eval-sexp-fu)
 
-(comment (use-package clj-refactor :ensure t
+(comment (use-package clj-refactor
            :delight
            :hook ((clojure-mode . (lambda ()
                                     (clj-refactor-mode 1))))))
 
-(use-package cljsbuild-mode :ensure t)
+(use-package cljsbuild-mode)
 
 ;; elixir --------------------------------------------------
 
-(use-package elixir-mode :ensure t
+(use-package elixir-mode
   :config (delight 'elixir-mode "exλ" :major))
 
 ;;; DATA ---------------------------------------------------------------------------------
-
 
 (add-hook 'json-mode-hook
           (lambda ()
             (make-local-variable 'js-indent-level)
             (setq js-indent-level 2)))
 
-(use-package yaml-mode :ensure t
+(use-package yaml-mode
   :mode "\\.ya?ml\\'")
 
-(use-package csv-mode :ensure t
+(use-package csv-mode
   :mode "\\.[Cc][Ss][Vv]\\'")
 
-(use-package nix-mode :ensure t
+(use-package nix-mode
   :mode "\\.nix\\'")
+
+(use-package dockerfile-mode)
 
 ;;; TEXT ---------------------------------------------------------------------------------
 
-(use-package markdown-mode :ensure t
+(use-package markdown-mode
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
