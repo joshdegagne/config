@@ -124,6 +124,9 @@
 
 ;;; BUFFERS ------------------------------------------------------------------------------
 
+;; control how "popup" buffers open so thy don't just split some random window
+(setq display-buffer-base-action '((display-buffer-in-side-window) . ((side . bottom))))
+
 ;; auto refresh buffers
 (global-auto-revert-mode t)
 ;; Also auto refresh dired, but be quiet about it
@@ -133,6 +136,8 @@
 ;; directory prefix for better buffer names
 (use-package uniquify
   :config (setq uniquify-buffer-name-style 'forward))
+
+;; TODO: might replace ibuffer with bufler
 
 (use-package ibuffer
   :config (delight '((ibuffer "" :major)))
