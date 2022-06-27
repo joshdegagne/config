@@ -36,6 +36,11 @@ auto-completion, structural editing, and highlighting. Mouse-less navigation is 
       jenv add /usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home
       ```
 - __leiningen__ cider, project configuration, package management
+- __clojure-cli__ cider, project configuration, package management
+- __clojure-lsp__ better ide like features in emacs
+  ```zsh
+  brew install clojure-lsp/brew/clojure-lsp-native
+  ```
 
 #### erlang/elixir
 
