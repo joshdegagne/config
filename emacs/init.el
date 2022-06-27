@@ -179,9 +179,11 @@
 (use-package solarized-theme
   :config
   (setq color-theme-is-global t
+        solarized-distinct-fringe-background t
         solarized-high-contrast-mode-line t
         solarized-use-less-bold t
         solarized-emphasize-indicators nil
+        solarized-use-more-italic t
         solarized-scale-org-headlines nil
         x-underline-at-descent-line t)
   (load-theme 'solarized-light 'no-confirm))
