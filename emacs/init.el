@@ -134,6 +134,7 @@
 
 ;; directory prefix for better buffer names
 (use-package uniquify
+  :ensure nil ; base emacs
   :config (setq uniquify-buffer-name-style 'forward))
 
 ;; TODO: might replace ibuffer with bufler
