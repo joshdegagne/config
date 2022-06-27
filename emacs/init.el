@@ -188,6 +188,38 @@
         x-underline-at-descent-line t)
   (load-theme 'solarized-light 'no-confirm))
 
+(use-package tab-bar
+  :ensure nil
+  :after powerline
+  :config
+  (setq tab-bar-separator ""
+        tab-bar-close-button-show nil
+        tab-bar-new-button-show nil)
+  (set-face-attribute 'tab-bar nil
+                      :inherit 'powerline-inactive1
+                      :background nil
+                      :foreground nil)
+  (set-face-attribute 'tab-bar-tab nil
+                      :inherit 'powerline-active0
+                      :background nil
+                      :foreground nil)
+  (set-face-attribute 'tab-bar-tab-inactive nil
+                      :inherit 'powerline-inactive0
+                      :background nil
+                      :foreground nil)
+  (defvar my/tab-bar-height 25)
+  (defvar my/tab-bar-left (powerline-wave-right 'tab-bar 'tab-bar-tab my/tab-bar-height))
+  (defvar my/tab-bar-right (powerline-wave-left 'tab-bar-tab 'tab-bar my/tab-bar-height))
+  (defvar my/tab-bar-left-inactive (powerline-wave-right 'tab-bar 'tab-bar-tab-inactive my/tab-bar-height))
+  (defvar my/tab-bar-right-inactive (powerline-wave-left 'tab-bar-tab-inactive 'tab-bar my/tab-bar-height))
+  (defun my/tab-bar-tab-name-format (tab i)
+    (let ((current-p (eq (car tab) 'current-tab)))
+      (powerline-render
+       (list (if current-p my/tab-bar-left my/tab-bar-left-inactive)
+             (format "%s" (tab-bar-tab-name-format-default tab i))
+             (if current-p my/tab-bar-right my/tab-bar-right-inactive)))))
+  (tab-bar-mode 1)
+  (setq tab-bar-tab-name-format-function #'my/tab-bar-tab-name-format))
 ;;; KEYS ---------------------------------------------------------------------------------
 ;; `bind-key` is only available after use-package
 
