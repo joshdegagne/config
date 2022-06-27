@@ -383,6 +383,9 @@
 (use-package company-quickhelp
   :after company
   :config (company-quickhelp-mode 1))
+(use-package company-box
+  :after company
+  :hook (company-mode . company-box-mode))
 
 ;; keep things balanced automatically
 (use-package smartparens
