@@ -82,6 +82,7 @@
 ;;; MAC ----------------------------------------------------------------------------------
 
 (when (equal system-type 'darwin)
+
   ;; move to trash when deleting stuff
   (setq delete-by-moving-to-trash t
         trash-directory "~/.Trash/emacs")
@@ -97,9 +98,7 @@
 
   ;; The osx ls does not support -X or --sort
   (require 'ls-lisp)
-  (setq ls-lisp-use-insert-directory-program nil)
-
-  )
+  (setq ls-lisp-use-insert-directory-program nil))
 
 ;;; ELISP --------------------------------------------------------------------------------
 
