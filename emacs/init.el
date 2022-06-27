@@ -220,6 +220,21 @@
              (if current-p my/tab-bar-right my/tab-bar-right-inactive)))))
   (tab-bar-mode 1)
   (setq tab-bar-tab-name-format-function #'my/tab-bar-tab-name-format))
+
+;; code folding [WIP]
+(comment
+ (defun display-code-line-counts (ov)
+   (when (eq 'code (overlay-get ov 'hs))
+     (overlay-put ov 'display
+                  (format " ... / %d "
+                          (count-lines (overlay-start ov)
+                                       (overlay-end ov))))))
+ (setq hs-hide-comments-when-hiding-all t
+       hs-set-up-overlay #'display-code-line-counts)
+ (use-package hideshowvis
+   :quelpa (:fetcher wiki :repo "https://www.emacswiki.org/emacs/hideshowvis.el")
+   ))
+
 ;;; KEYS ---------------------------------------------------------------------------------
 ;; `bind-key` is only available after use-package
 
